@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hover Image Modal</title>
+  <style>
+    /* Thumbnail image style */
+    .thumbnail {
+      width: 150px;
+      cursor: pointer;
+    }
+
+    /* Modal background overlay */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Image inside modal */
+    .modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Thumbnail Image -->
+<img
+  class="thumbnail"
+  src="./photos/IMG-20250709-WA0018.jpg"
+  alt="Thumbnail"
+  onmouseover="showModal(this)"
+  onmouseout="hideModal()"
+/>
+
+<!-- Modal Overlay -->
+<div class="modal" id="imageModal">
+  <img id="modalImage" src="" alt="Original Image">
+</div>
+
+<script>
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+
+  function showModal(imgElement) {
+    modalImg.src = imgElement.src;
+    modal.style.display = 'flex';
+  }
+
+  function hideModal() {
+    modal.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

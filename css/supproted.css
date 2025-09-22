@@ -1,0 +1,78 @@
+.main-container {
+  margin: 10px 12px 10px;
+  padding: 5px 5px 5px;
+  font-size: 30px;
+  color: white;
+}
+/* IMAGE Slider */
+.image-supported {
+  overflow-x: hidden;
+  border-radius: 10px;
+  padding: 10px 10px 10px;
+}
+
+.wrapper-supported {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(
+    (160px - (1.5rem * (var(--per-view) - 40))) / var(--per-view)
+  );
+  grid-gap: 1.5rem;
+  position: relative;
+  left: 0;
+  transition: 0.3s;
+}
+
+.image-wrapper-supported > * {
+  aspect-ratio: 4 / 3;
+}
+.img-supported {
+  height: 240px;
+  width: 350px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.5rem;
+}
+.details {
+  margin-top: 10px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  width: 350px;
+  box-shadow: 0 0 5px rgb(188, 235, 235), 0 0 10px rgb(0, 255, 255),
+    0 0 20px cyan, 0 0 40px cyan, 0 0 80px cyan;
+}
+.details h4 {
+  font-size: 20px;
+}
+.details p {
+  font-size: 15px;
+  padding: 10px 10px 10px;
+}
+@media (width < 460px) {
+.img-supported {
+  height: 240px;
+  width: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.5rem;
+}
+.details {
+  margin-top: 10px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0 0 5px rgb(188, 235, 235), 0 0 10px rgb(0, 255, 255),
+    0 0 20px cyan, 0 0 40px cyan, 0 0 80px cyan;
+}
+.details h4 {
+  font-size: 20px;
+}
+.details p {
+  font-size: 15px;
+  padding: 10px 10px 10px;
+}
+}

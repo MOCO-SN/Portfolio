@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sachin's Profile || Main Dashboard</title>
+    <link rel="icon" href="./favicon.png">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/image_main.css">
+    <meta name="theme-color" content="#06c1db">
+    <link rel="stylesheet" href="./css/supproted.css">
+    <link rel="stylesheet" href="./css/accessgps.css">
+    <link rel="stylesheet" href="./css/edu.css">
+    <link rel="stylesheet" href="./css/links.css">
+    <link rel="stylesheet" href="./css/loading.css">
+    <link rel="stylesheet" href="./css/scroll-line.css">
+    <link rel="stylesheet" href="./css/cursor_tracking.css">
+    <link rel="stylesheet" href="./css/progress.css">
+    <link rel="stylesheet" href="./css/blog.css">
+    <link rel="stylesheet" href="./css/photos.css">
+    <link rel="stylesheet" href="./css/sidenav.css">
+    <link rel="stylesheet" href="./css/certificates.css">
+    <link rel="stylesheet" href="./css/projects.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+
+<body oncontextmenu="return false">
+    <div id="locationModal">
+        <div id="locationBox">
+            <h3>📍 Allow Location Access?</h3>
+            <p>We’d like to save your location along with device info for analytics.</p>
+            <button id="allowBtn">Allow</button>
+            <button id="denyBtn">Deny</button>
+        </div>
+    </div>
+    <div class="cursor"></div>
+    <div class="overlays" id="overlays">
+        <div class="alert-box">
+            <h3 class="h3">Notifications !</h3>
+            <hr>
+            <p>This website is Made By <b>Sachin.</b><br>
+                It contain info. about me.<br>UI Version V7.0 <br>Updated on 30-08-2025</p>
+            <hr><button class="btnok" id="okBtn">OK</button>
+            <button class="btnupdate" id="updateBtn">Contact</button>
+        </div>
+    </div>
+    <div class="scroll-line"></div>
+
+    <div class="topnav">
+        <div class="logo">MOCO SN</div>
+        <div class="menu"> <button onclick="openNav()"><ion-icon name="menu-outline"></ion-icon></button></div>
+    </div>
+
+    <div class="nav">
+        <div class="sidenav">
+            <ul>
+                <li class="list active"><a href="#home-section">Home</a></li>
+                <li class="list"><a href="#photos-section">Photos</a></li>
+                <li class="list"><a href="#about-section">About</a></li>
+                <li class="list"><a href="#education-section">Education</a></li>
+                <li class="list"><a href="#projects-section">Projects</a></li>
+                <li class="list"><a href="#certifications-section">Certifications</a></li>
+                <li class="list"><a href="#supported-section">Supported</a></li>
+                <li class="list"><a href="#blog-section">Blog</a></li>
+                <li class="list"><a href="#links-section">Links</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="mySidenav" class="phone_nav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class="phone_navi" href="#home-section">Home</a>
+        <a class="phone_navi" href="#photos-section">Photos</a>
+        <a class="phone_navi" href="#about-section">About</a>
+        <a class="phone_navi" href="#education-section">Education</a>
+        <a class="phone_navi" href="#projects-section">Projects</a>
+        <a class="phone_navi" href="#certifications-section">Certifications</a>
+        <a class="phone_navi" href="#supported-section">Supported</a>
+        <a class="phone_navi" href="#blog-section">Blog</a>
+        <a class="phone_navi" href="#links-section">Links</a>
+    </div>
+    <section id="home-section">
+
+        <div class="image-container">
+            <!-- <img src="./photos/hero-min.jpg" alt="Image"> -->
+            <!-- <img src="./slide_images/home_main.jpg" alt="Image"> -->
+            <img src="./photos/new.jpg" alt="Image">
+
+            <!-- https://firebasestorage.googleapis.com/v0/b/moco-player-f396a.appspot.com/o/profile%2Flove.jpg?alt=media&token=32fe6447-1883-4cfe-9e77-fe12fc0f9b7d -->
+            <div class="overlay">
+                <h2>Welcome!</h2>
+                <p>Hey ! I'm Sachin and you ?</p>
+                <a target="_blank"
+                    href="https://firebasestorage.googleapis.com/v0/b/moco-player-f396a.appspot.com/o/profile%2FCV%20Or%20Resume.pdf?alt=media&token=3acbdf26-82d7-405d-a9a3-1033ab91816d">
+                    <button>Download Resume or CV.</button>
+                </a>
+                 <!-- <a target=" _blank" href="./resume_or_cv/CV Or Resume.pdf"">
+                    <button>Download Resume or CV.</button>
+                </a> -->
+            </div>
+        </div>
+    </section>
+    <section id="photos-section">
+                    <h3>Photos
+                        <hr>
+                    </h3>
+                    <div class="image-grid" id="imageGrid"></div>
+                    <!-- Modal -->
+                    <div id="imageModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                    </div>
+    </section>
+    <section id="about-section">
+        <h3>About
+            <hr>
+        </h3>
+        <div class="main">
+            <img loading="lazy" src="photos/img_1.jpg" alt="my_img" />
+            <h4>I'm Sachin Patel</h4>
+            <p>I am a website and application Developer of Android and Windows also.
+                <!-- <br> And i am also Web and App Developer. -->
+            </p>
+        </div>
+    </section>
+    <section id="education-section">
+        <h3>Education
+            <hr>
+        </h3>
+        <div class="edu-main">
+            <div class="card-section" id="feels">
+                <div class="card-content">
+                    <div class="card-subtitle">Time-Line</div>
+                    <div class="card-timeline">
+                        <div class="card-item" data-year="2019">
+                            <div class="card-item-title">8<sup>th</sup> All Subject.<span></span></div>
+                            <div class="card-item-desc">SBCM School. Bhagwanpur, Saran.(Bihar) <br><a
+                                    href="https://www.sbcmschool.com/" target="_blank"><u>View</u></a></div>
+                        </div>
+                        <div class="card-item" data-year="2021">
+                            <div class="card-item-title">10<sup>th</sup> All Subject.<span></span></div>
+                            <div class="card-item-desc">RJ High School Khanpur, Saran.(Bihar)</div>
+                        </div>
+                        <div class="card-item" data-year="2022">
+                            <div class="card-item-title"><span>Skill Devlopment</span></div>
+                            <div class="card-item-desc">Self Devlopment.</div>
+                        </div>
+                        <div class="card-item" data-year="2025">
+                            <div class="card-item-title">Diploma<sup>Electronics Engg.</sup><span></span></div>
+                            <div class="card-item-desc">Government Polytechnic Purnea.(Bihar)<br><a
+                                    href="https://www.gppurnea.in/" target="_blank"><u>View</u></a></div>
+                        </div>
+                        <div class="card-item" data-year="soon..">
+                            <div class="card-item-title">soon..<span></span></div>
+                            <div class="card-item-desc">soon..</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3>Skills
+            <hr>
+        </h3>
+        <div class="lang">
+            <h5 class="languages">Programing Languages : -</h5>
+            <p>HTML</p>
+            <div class="container">
+                <div class="skill html">80%</div>
+            </div>
+
+            <p>Css</p>
+            <div class="container">
+                <div class="skill css">40%</div>
+            </div>
+
+            <p>C</p>
+            <div class="container">
+                <div class="skill c">30%</div>
+            </div>
+
+            <p>C++</p>
+            <div class="container">
+                <div class="skill cpp">20%</div>
+            </div>
+
+            <p>C#</p>
+            <div class="container">
+                <div class="skill csh">15%</div>
+            </div>
+
+            <p>JAVA</p>
+            <div class="container">
+                <div class="skill java">20%</div>
+            </div>
+            <p>JAVASCRIPT</p>
+            <div class="container">
+                <div class="skill js">20%</div>
+            </div>
+            <p>KOTLIN</p>
+            <div class="container">
+                <div class="skill kotlin">5%</div>
+            </div>
+        </div>
+    </section>
+    <section id="projects-section">
+        <h3>Projects
+            <hr>
+        </h3>
+        <div class="project-container">
+            <div id="projectList" class="project-list">
+                <!-- JS will inject project cards here -->
+            </div>
+        </div>
+    </section>
+    <section id="certifications-section">
+        <h3>Badges & Certifications
+            <hr>
+        </h3>
+        <div class="image-certificate">
+            <img loading="lazy" class="imgs" src="./certificates/badge_report.png" alt="Image - certificates" />
+            <img loading="lazy" class="imgs" src="./certificates/CyberEssentials.png" alt="Image - certificates" />
+            <img loading="lazy" class="imgs" src="./certificates/digital_awareness.png" alt="Image - certificates" />
+            <img loading="lazy" class="imgs" src="./certificates/Introduction_to_Cybersecurity.png"
+                alt="Image - certificates" />
+            <img loading="lazy" class="imgs" src="./certificates/python.png" alt="Image - certificates" />
+        </div>
+    </section>
+    <section id="supported-section">
+        <h3>Supported
+            <hr>
+        </h3>
+        <div class="main-container">
+            <div class="image-supported">
+                <div class="wrapper-supported" id="familyWrapper"></div>
+            </div>
+        </div>
+    </section>
+    <section id="blog-section">
+        <h3>Blogs
+            <hr>
+        </h3>
+        <div id="blogsContainer">
+        </div>
+    </section>
+    <section id="links-section">
+        <h3>Links
+            <hr>
+        </h3>
+
+        <!-- Main Links -->
+        <div class="links-main">
+            <a href="https://sachinsoft.surge.sh/">
+                <button class="button-85" role="button">Software's</button>
+            </a>
+            <a href="https://snlink.surge.sh/">
+                <button class="button-85" role="button">Link Tree</button>
+            </a>
+            <a href="/LoginSystem/index.html">
+                <button class="button-85" role="button">Love</button>
+            </a>
+            <a href="/error_pages/error.html">
+                <button class="button-85" role="button">Family Picture</button>
+            </a>
+        </div>
+
+        <hr class="link-media-hr">
+        <!-- ✅ Media / Social Links -->
+        <div class="link-media">
+            <a href="https://github.com/MOCO-SN" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub">
+            </a>
+            <a href="https://twitter.com/" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt="Twitter">
+            </a>
+            <a href="https://www.linkedin.com/in/sachin-patel-b5106a295" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/_sachin_2006_01/" target="_blank">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram">
+            </a>
+        </div>
+        <hr>
+        <!-- Footer Note -->
+        <p class="links-text">
+            <u>This Website is Made by Sachin Patel.<br>
+                This Website is Made for show only Personal Profile.<br>
+                This profile is note a private.</u>
+        </p>
+    </section>
+
+</body>
+<script src="./js/main.js"></script>
+<script src="./js/sidenav.js"></script>
+<script src="./js/cursor_tracking.js"></script>
+<script src="./js/loading.js"></script>
+<script src="./js/supported.js"></script>
+<script src="./js/photos.js"></script>git remote -v
+<script src="./js/project.js"></script>
+<script src="./js/blogs.js"></script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+  // ✅ Firebase config
+  const firebaseConfig = { 
+    apiKey: "AIzaSyCYW3AxavIoamXcve-CUoGB0tDlLwmSpRs",
+    authDomain: "collage-porject-final.firebaseapp.com",
+    databaseURL: "https://collage-porject-final-default-rtdb.firebaseio.com",
+    projectId: "collage-porject-final",
+    storageBucket: "collage-porject-final.appspot.com",
+    messagingSenderId: "220400167688",
+    appId: "1:220400167688:web:a6474ac58691259e2c9abd",
+    measurementId: "G-9NJ6QQ4X8G"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  // 📌 Get IST timestamp
+  function getISTTimestamp() {
+    return new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  }
+
+  // 📌 Device details
+  function getDeviceInfo() {
+    return {
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      language: navigator.language,
+      screenWidth: screen.width,
+      screenHeight: screen.height,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      referrer: document.referrer || "Direct",
+      pageURL: location.href
+    };
+  }
+
+  // 📌 Get IP
+  async function getIP() {
+    try {
+      const res = await fetch("https://ipapi.co/json/");
+      return await res.json();
+    } catch {
+      return { ip: null };
+    }
+  }
+
+  // 📌 Get GPS
+  function requestGPS() {
+    return new Promise((resolve) => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => resolve({
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude,
+            accuracy: pos.coords.accuracy
+          }),
+          (err) => {
+            console.warn("❌ Location denied:", err.message);
+            resolve({ latitude: null, longitude: null, accuracy: null });
+          },
+          { enableHighAccuracy: true, timeout: 10000 }
+        );
+      } else {
+        resolve({ latitude: null, longitude: null, accuracy: null });
+      }
+    });
+  }
+
+  // 📌 Collect & save
+  async function saveClientInfo(withGPS) {
+    const deviceInfo = getDeviceInfo();
+    const ipInfo = await getIP();
+    const gps = withGPS ? await requestGPS() : { latitude: null, longitude: null, accuracy: null };
+
+    const finalData = {
+      ...deviceInfo,
+      gps,
+      ip: ipInfo.ip || null,
+      city: ipInfo.city || null,
+      region: ipInfo.region || null,
+      country: ipInfo.country_name || null,
+      org: ipInfo.org || null,
+      timestamp: getISTTimestamp()
+    };
+
+    const deviceRef = push(ref(database, "sachinpro_visitors"));
+    await set(deviceRef, finalData);
+    console.log("✅ Saved:", finalData);
+  }
+
+  // 📌 Show modal first
+  window.addEventListener("load", () => {
+    const modal = document.getElementById("locationModal");
+    modal.classList.add("active");
+
+    document.getElementById("allowBtn").addEventListener("click", async () => {
+      modal.classList.remove("active");
+      await saveClientInfo(true);
+    });
+
+    document.getElementById("denyBtn").addEventListener("click", async () => {
+      modal.classList.remove("active");
+      await saveClientInfo(false);
+    });
+  });
+</script>
+
+</html>

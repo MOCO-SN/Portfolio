@@ -1,0 +1,49 @@
+p { 
+    font-size: 20px; 
+    margin-bottom: 5px;
+} 
+
+.container { 
+    background-color: rgb(222, 222, 222); 
+    width: 80%; 
+    border-radius: 5px; 
+} 
+
+.skill { 
+    background-color: rgb(218, 129, 184); 
+    color: white; 
+    padding: 1%; 
+    text-align: right; 
+    font-size: 20px; 
+    border-radius: 5px; 
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+} 
+
+.html { 
+    width: 80%; 
+} 
+
+.css { 
+    width: 40%; 
+} 
+.c { 
+    width: 30%; 
+} 
+
+.cpp { 
+    width: 20%; 
+} 
+.csh { 
+    width: 15%; 
+} 
+
+.java { 
+    width: 20%; 
+} 
+.kotlin { 
+    width: 5%; 
+} 
+
+.js { 
+    width: 20%; 
+} 

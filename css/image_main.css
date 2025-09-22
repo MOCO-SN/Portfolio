@@ -1,0 +1,50 @@
+ /* Container for the image */
+ .image-container {
+    position: relative;
+    margin: 5px;
+    background-repeat: no-repeat;
+    display: inline-block;
+  }
+
+  /* The image */
+  .image-container img {
+    width: 100%; /* Adjust the size as needed */
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  /* Overlay for text and button */
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+  }
+
+  /* Styling for the text */
+  .overlay h2 {
+    font-size: 50px;
+    margin: 10px;
+  }
+  .overlay p{
+    font-size: 20px;
+    margin: 10px;
+  }
+
+  /* Styling for the button */
+  .overlay button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.69);
+    color: white;
+    border: 2px transparent solid;
+    cursor: pointer;
+  }
+
+  .overlay button:hover {
+    border: 2px rgb(255, 255, 255) solid;
+    background-color: rgba(0, 0, 0, 0.8);
+  }

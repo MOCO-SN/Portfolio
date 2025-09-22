@@ -1,0 +1,64 @@
+
+.cursor {
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+    border-radius: 50%;
+    background: transparent;
+    pointer-events: none;
+    z-index: 111;
+    border: 2px solid cyan;
+    transition: all 0.2s ease-out;
+    animation: moveCursor1 .5s infinite alternate;
+  }
+  
+  .expand {
+    background: transparent;
+    animation: moveCursor2 .5s forwards;
+    border: 4px solid cyan;
+  }
+  
+  @keyframes moveCursor1 {
+    from {
+        transform: scale(1);
+        box-shadow: cyan 0px 54px 55px,
+        cyan 0px -12px 30px, cyan 0px 4px 6px,
+        cyan 0px 12px 13px, cyan 0px -3px 5px;
+    
+    }
+  
+    to {
+      box-shadow: cyan 0px 54px 55px,
+        cyan 0px -12px 30px, cyan 0px 4px 6px,
+        cyan 0px 12px 13px, cyan 0px -3px 5px;
+        transform: scale(.8);
+    }
+  }
+  
+  @keyframes moveCursor2 {
+    0% {
+      box-shadow: cyan 0px 54px 55px,
+        cyan 0px -12px 30px, cyan 0px 4px 6px,
+        cyan 0px 12px 13px, cyan 0px -3px 5px;
+        transform: scale(1);
+    }
+  
+    50% {
+      box-shadow: cyan 0px 54px 55px,
+        cyan 0px -12px 30px, cyan 0px 4px 6px,
+        cyan 0px 12px 13px, cyan 0px -3px 5px;
+      transform: scale(2);
+    }
+  
+    100% {
+      box-shadow: cyan 0px 54px 55px,
+        cyan 0px -12px 30px, cyan 0px 4px 6px,
+        cyan 0px 12px 13px, cyan 0px -3px 5px;
+      transform: scale(1);
+        opacity: 0;
+    }
+  }

@@ -1,0 +1,126 @@
+.h3 {
+  font-size: 30px;
+  margin-top: 20px;
+  margin: 20px;
+  font-family: sans-serif;
+}
+.overlays {
+  color: #000000;
+  padding: 10px;
+  transform: rotate3d();
+  position: fixed;
+  top: 0;
+  animation-name: load;
+  animation-duration: 10s;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 9999;
+}
+.alert-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20rem;
+  height: auto;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.alert-box p{
+  margin: 10px;
+}
+@keyframes load {
+  0% {
+    background: rgb(250, 71, 71);
+  }
+  10% {
+    background: rgb(106, 106, 237);
+  }
+  20% {
+    background: pink;
+  }
+  30% {
+    background: yellow;
+  }
+  40% {
+    background: cyan;
+  }
+  50% {
+    background: aqua;
+  }
+  60% {
+    background: rgb(130, 238, 130);
+  }
+  70% {
+    background: gray;
+  }
+  80% {
+    background: peru;
+  }
+  90% {
+    background: blanchedalmond;
+  }
+  100% {
+    background: rgb(231, 113, 113);
+  }
+}
+
+/* @keyframes load {
+    from {background-color: cyan;}
+    to {background-color: pink;}
+  } */
+.btnok {
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  float: left;
+  margin-left: 20px;
+  padding: 6px 20px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.btnupdate {
+  float: right;
+  background-color: #00ffaa;
+  color: #fff;
+  border: none;
+  letter-spacing: 0.02cm;
+  margin-right: 20px;
+  padding: 6px 20px 6px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.btnupdate:hover {
+  float: right;
+  background-color: #5eefbf;
+  color: #fff;
+  border: none;
+  margin-right: 20px;
+  padding: 6px 20px 6px;
+  border-radius: 5px;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+@media (width > 600px) {
+
+  .alert-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    padding: 30px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+}

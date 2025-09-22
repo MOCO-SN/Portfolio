@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/jpg" sizes="" href="/favicon.png">
+    <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title> Friends || Brother's </title>
+          <!--Google Fonts-->
+    <meta name="theme-color" content="#06c1db">
+
+          <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<!--Stylesheets-->
+<style>
+          *,
+          *:before,
+          *:after {
+                    padding: 0;
+                    margin: 0;
+                    box-sizing: border-box;
+          }
+
+          body {
+                    background-color: #aeccee5f;
+          }
+
+          .popup {
+                    width: 400px;
+                    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+                    padding: 25px 30px;
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    left: 50%;
+                    top: 50%;
+                    border-radius: 8px;
+                    font-family: "Poppins", sans-serif;
+                    display: none;
+                    text-align: center;
+          }
+
+          .popup h2 {
+                    margin-top: 20px;
+                    font-size: 35px;
+          }
+          .popup h2 img{
+                    margin:-7px;
+                    width:60px;
+                    height:40px;
+          }
+
+          .popup p {
+                    font-size: 15px;
+                    text-align: center;
+                    margin: 20px 0;
+                    line-height: 25px;
+          }
+
+          button {
+                    display: block;
+                    width: 150px;
+                    position: relative;
+                    margin: 10px auto;
+                    text-align: center;
+                    background-color: #9ff2b08d;
+                    border-radius: 10px;
+                    color: #141010da;
+                    text-decoration: none;
+                    padding: 8px 0;
+                    border-color: rgb(0, 136, 255);
+                    box-shadow: rgba(238, 239, 241, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+          }
+          button:hover {
+                    display: block;
+                    width: 150px;
+                    position: relative;
+                    margin: 10px auto;
+                    text-align: center;
+                    background-color: #37f4ee8d;
+                    color: #141010da;
+                    text-decoration: none;
+                    padding: 8px 0;
+                    border-color: rgb(5, 247, 255);
+                    box-shadow: rgba(238, 239, 241, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+          }
+
+          .popup label {
+                    font-weight: 900;
+                    font-size: 24px;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+          }
+
+          .popup input {
+                    margin-top: 60px;
+                    padding: 10px 10px 10px;
+                    border-radius: 10px;
+                    border-color: aliceblue;
+                    text-align: center;
+                    margin: 10px;
+                    box-shadow: rgba(238, 239, 241, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+          }
+
+          .popup input:placeholder-shown {
+                    font-size: 15px;
+                    letter-spacing: .01cm;
+                    font-family:sans-serif;
+          }
+</style>
+
+<body>
+          <div class="popup">
+                    <h2>Authentication<img src="/images/check.png"></h2>
+                    <p>Firstly verify your identity to show my Friends photos..</p>
+                    <label>Enter Passkey</label><br>
+                    <input id="passkey" type="password" placeholder="Enter Passkey">
+                    <button onclick="passFunction()"> Verify me !</button>
+          </div>
+          <!--Script-->
+          <script type="text/javascript">
+                    window.addEventListener("load", function () {
+                              setTimeout(
+                                        function open(event) {
+                                                  document.querySelector(".popup").style.display = "block";
+                                        },
+                                        1000
+                              )
+                    });
+                    // pass auth
+                    var key = 'Sushant';
+                    var key1 = 'sushant';
+                    var key2 = 'Shreya';
+                    var key3 = 'shreya';
+                    var key4 = 'Sherkhar';
+                    var key5 = 'shekhar';
+                    var key6 = 'soni';
+                    var key7 = 'Soni';
+                    var key8 = 'Shilpi';
+                    var key9 = 'shilpi';
+                    var key10 = 'Prince';
+                    var key11 = 'prince';
+                    var key12 = 'ranjit';
+                    var key13 = 'Ranjit';
+                    // more pass are add in next update
+
+                    function passFunction() {
+                              const input = document.getElementById("passkey");
+                              const value1 = input.value;
+                              alert(value1)
+                              if (value1 == key) {
+                                        alert("Passkey Matched");
+                                        setTimeout(function () {
+                                                  window.location.href = "friend-profiles\sushant.html";
+                                        }, 1000);
+                              }
+                              else if(value1 == key1){
+                                        alert("Passkey Matched");
+                                        setTimeout(function () {
+                                                  window.location.href = "friend-profiles\sushant.html";
+                                        }, 1000);
+                              }
+                              else if(value1 == key2){
+                                        alert("Passkey Matched");
+                                        setTimeout(function () {
+                                                  window.location.href = "friend-profiles\sushant.html";
+                                        }, 1000);
+                              }
+                              else if(value1 == key3){
+                                        alert("Passkey Matched");
+                                        setTimeout(function () {
+                                                  window.location.href = "friend-profiles\sushant.html";
+                                        }, 1000);
+                              }
+                              else if(value1 == key4){
+                                        alert("Passkey Matched");
+                                        setTimeout(function () {
+                                                  window.location.href = "friend-profiles\sushant.html";
+                                        }, 1000);
+                              }
+                              else if(value1 == key5){
+                                        alert("Passkey Matched");
+                                        setTimeout(function () {
+                                                  window.location.href = "friend-profiles\sushant.html";
+                                        }, 1000);
+                              }
+                              else if(value1 == key6){
+                                        alert("Passkey Matched");
+                                        setTimeout(function () {
+                                                  window.location.href = "friend-profiles\sushant.html";
+                                        }, 1000);
+                              }
+                              else {
+                                        alert("Incorret Passkey || Please Enter Valid Passkey..")
+                              }
+                    }
+          </script>
+</body>
+
+</html>

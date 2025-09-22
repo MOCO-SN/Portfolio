@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/jpg" sizes="" href="/favicon.png">
+  <meta name="theme-color" content="#06c1db">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Verification || Protected </title>
+  <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<!--Stylesheets-->
+<style>
+  *,
+  *:before,
+  *:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #aeccee5f;
+  }
+
+  .popup {
+    padding: 20px 20px 20px;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+     position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    border: 1px rgb(87, 86, 86) solid;
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    display: none;
+    text-align: center;
+  }
+
+  .popup h2 {
+    margin-top: 20px;
+    font-size: 35px;
+  }
+
+  .popup h2 img {
+    margin: -7px;
+    width: 60px;
+    height: 40px;
+  }
+
+  .popup p {
+    font-size: 15px;
+    text-align: center;
+    margin: 20px 0;
+    line-height: 25px;
+  }
+
+  /* CSS */
+  button {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Amazon Ember", sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+  }
+
+  button:hover {
+    background-color: #f7fafa;
+  }
+
+  button:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
+  }
+
+  .popup label {
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .popup input {
+    margin-top: 60px;
+    padding: 10px 10px 10px;
+    border-radius: 5px;
+    border-color: aliceblue;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  }
+
+  .popup input:placeholder-shown {
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: .03cm;
+  }
+
+  svg {
+    width: 100px;
+  }
+</style>
+
+<body>
+  <div class="popup">
+    <h2> Verification </h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <g data-name="Lock">
+        <path
+          d="M256 269.953a18.928 18.928 0 0 0-9.448 35.34v21.06h18.896v-21.06a18.931 18.931 0 0 0-9.448-35.34zM256.01 178.08a28.913 28.913 0 0 0-28.882 28.882v30.753h57.753v-30.753a28.917 28.917 0 0 0-28.872-28.881z" />
+        <path
+          d="M256 73.825c-100.617 0-182.18 81.562-182.18 182.17A182.182 182.182 0 0 0 256 438.176c100.608 0 182.18-81.57 182.18-182.18S356.608 73.825 256 73.825zm77.387 254.426a21.409 21.409 0 0 1-21.41 21.41H200.032a21.404 21.404 0 0 1-21.411-21.41v-69.126a21.419 21.419 0 0 1 17.007-20.953v-31.21a60.377 60.377 0 1 1 120.753 0v31.21a21.42 21.42 0 0 1 16.998 20.953v69.126z" />
+      </g>
+    </svg>
+    <p>Firstly verify your identity to show my private photos or pictures..</p>
+    <label>Enter Passkey</label><br>
+    <input id="passkey" type="password" placeholder="Enter Passkey">
+    <button onclick="passFunction()"> Verify me !</button>
+  </div>
+  <!--Script-->
+  <script type="text/javascript">
+    window.addEventListener("load", function () {
+      setTimeout(
+        function open(event) {
+          document.querySelector(".popup").style.display = "block";
+        },
+        1000
+      )
+    });
+    // pass auth
+    var key = '148921';
+    var key1 = '143';
+    var key2 = 'slove';
+    var key3 = "ss";
+    var key4 = 'Sachin143';
+    var key5 = 'Momlove';
+    var key6 = 'Papalove';
+    var key7 = 'Moco';
+    var key8 = 'moco';
+    var key9 = 'Shreya';
+    var key10 = 'shreya';
+    var key11 = 'pragya';
+    var key12 = 'Pragya';
+
+    function passFunction() {
+      const input = document.getElementById("passkey");
+      const value1 = input.value;
+      alert(value1)
+      if (value1 == key) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key1) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key2) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key3) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key4) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key5) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key6) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key7) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      } else if (value1 == key8) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      } else if (value1 == key9) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      } else if (value1 == key10) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      } else if (value1 == key11) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else if (value1 == key12) {
+        alert("Passkey is Corret || Your are redirect on Love || Crush page");
+        setTimeout(function () {
+          window.location.href = "./image.html";
+        }, 1000);
+      }
+      else {
+        alert("Incorret Passkey || Please Enter Valid Passkey..")
+      }
+    }
+  </script>
+</body>
+
+</html>

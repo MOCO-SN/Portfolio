@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="theme-color" content="#06c1db">
+  <link rel="icon" type="image/jpg" sizes="" href="/favicon.png">
+  <meta charset="UTF-8">
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script src="/alert.js"></script>
+          <link rel="stylesheet" href="sweetalert2.min.css">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title> Collage || Study </title>
+</head>
+<style>
+          body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+          }
+
+          .cont {
+          
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 3rem;
+          }
+
+          .download-container {
+                    width: 300px;
+                    height: auto;
+                    margin: 0px auto;
+                    background-color: #ffffff;
+                    padding: 20px 20px 20px;
+                    border-radius: 8px;
+                    text-align: center;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          }
+
+          .bt {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    text-decoration: none;
+                    background-color: transparent;
+                    color: #7a7979fa;
+                    border-radius: 5px;
+                    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+                    transition: background-color 0.5s ease;
+          }
+
+          a:hover {
+                    background-color: #06df11;
+                    color: aquamarine;
+          }
+
+          img {
+                    width: 40px;
+                    margin: -6px;
+          }
+          h1{
+            font-family: 'Courier New', Courier, monospace;
+                    padding: 10px 10px 10px;
+                    text-align: center;
+                    font-weight: 900;
+                    text-shadow:
+    0 0 5px aqua,
+    0 0 10px aqua,
+    0 0 20px aqua,
+    0 0 40px aqua,
+    0 0 80px aqua;
+                    border-radius: 10px;
+                    color: white;
+                    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+          }
+</style>
+
+<body>
+          <h1>Notes</h1>
+          <div class="cont">
+                    <div class="download-container">
+                              <h2>5th Semester Electronics</h2>
+                              <p>This is all about Electronics branch.</p>
+                              <a href="https://www.mediafire.com/folder/8tic89vyjp3mz/5th" download class="bt" onclick="bt()">Download</a>
+                    </div>
+                    <div class="download-container">
+                              <h2>Some Html tags.<img src="/images/check.png"></h2>
+                              <p> Programing.. </p>
+                              <a href="https://www.mediafire.com/file/om2b0e2qt6higxf/html+notes.pdf/file" class="bt" download onclick="bt()">Download</a>
+                    </div>
+
+                    <div class="download-container">
+                              <h2>Java Programming.<img src="/images/check.png"></h2>
+                              <p>Notes..</p>
+                              <a href="https://www.mediafire.com/file/ri4tde38kb14ysm/Java+Programming.pdf/file" class="bt" download onclick="bt()">Download</a>
+                    </div>
+                    <div class="download-container">
+                              <h2>Js Programing 1.<img src="/images/check.png"></h2>
+                              <p>Notes..</p>
+                              <a href="https://www.mediafire.com/file/h95jjqrnemkkv99/js+-programing.pdf/file" class="bt" onclick="bt()" download>Download</a>
+                    </div>
+                    <div class="download-container">
+                              <h2>Js Programing 2.<img src="/images/check.png"></h2>
+                              <p>Notes..</p>
+                              <a href="https://www.mediafire.com/file/okl2uivz68qrtci/js+-+programing.pdf/file" download class="bt" onclick="bt()">Download</a>
+                    </div>
+                    <div class="download-container">
+                              <h2>Js Programing 3.<img src="/images/check.png"></h2>
+                              <p>Notes..</p>
+                              <a href="https://www.mediafire.com/file/m6vpopsm4vqhn2n/js+programming.pdf/file" class="bt" download onclick="bt()">Download</a>
+                    </div>
+                    <div class="download-container">
+                              <h2>Matlab.<img src="/images/check.png"></h2>
+                              <p>Cmds Notes..</p>
+                              <a href="https://www.mediafire.com/file/e3eg05jmb95o8h0/MATLAB_-_Commands.pdf/file" download class="bt" onclick="bt()">Download</a>
+                    </div>
+                    <div class="download-container">
+                              <h2>Python Programming.<img src="/images/check.png"></h2>
+                              <p>Notes..</p>
+                              <a href="https://www.mediafire.com/file/3zwhzi1ibsvl0te/Python+Programming.++Python+Programming+for+Beginners,+Python+Programming+for+Intermediates+(+PDFDrive+).pdf/file"
+                                        class="bt" download onclick="bt()">Download</a>
+                    </div>
+                    <div class="download-container">
+                              <h2>Python Training.<img src="/images/check.png"></h2>
+                              <p>Notes..</p>
+                              <a href="https://www.mediafire.com/file/j05fzonnjm8m06z/Python+Training.pdf/file" class="bt" download onclick="bt()">Download</a>
+                    </div>
+                    <!-- <object data="/assets/first lecture of EEM 06-03-24.pdf"></object> -->
+</body>
+<script>
+    alert("This website is updated soon............")
+          alert("In this page completed tasks are checked \nor not completed tasks are not checked")
+          function bt() {
+                    Swal.fire({
+                              position: "center",
+                              icon: "success",
+                              title: "Downloading....",
+                              text: "Your have been redirected on download page.",
+                              showConfirmButton: false,
+                              timer: 1500
+                    });
+          }
+</script>
+
+</html>

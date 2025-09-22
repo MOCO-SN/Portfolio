@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.form-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 0.8rem;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
+    font-size: 1rem;
+    color: #333;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 1px solid #555;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+label {
+    position: absolute;
+    top: 0.9rem;
+    left: 2.5rem;
+    color: #aaa;
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+    top: -0.5rem;
+    left: 2.3rem;
+    font-size: 0.75rem;
+    color: #555;
+    background-color: white;
+    padding: 0 0.2rem;
+}
+
+.recover {
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.recover a {
+    color: #7d7deb;
+    text-decoration: none;
+}
+
+.recover a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #7d7deb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #07001f;
+}
+
+.or {
+    text-align: center;
+    margin-top: 0.8rem;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.8rem;
+}
+
+.icons i {
+    font-size: 1.5rem;
+    padding: 0.6rem;
+    border-radius: 50%;
+    border: 2px solid #dfe9f5;
+    color: #7d7deb;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.icons i:hover {
+    background-color: #07001f;
+    color: white;
+    border-color: #7d7deb;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+}
+
+#signUpButton, #signInButton {
+    background: none;
+    border: none;
+    color: #7d7deb;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#signUpButton:hover, #signInButton:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.messageDiv {
+    background-color: hsl(327, 90%, 28%);
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    animation: fadeOut 7s forwards;
+    opacity: 1;
+}
+
+@keyframes fadeOut {
+    0%, 80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .container {
+        padding: 1.2rem;
+        border-radius: 10px;
+    }
+
+    input {
+        padding-left: 2.2rem;
+    }
+
+    label {
+        left: 2.2rem;
+    }
+
+    .icons i {
+        font-size: 1.3rem;
+        padding: 0.5rem;
+    }
+}
