@@ -4,13 +4,13 @@ p {
 } 
 
 .container { 
-    background-color: rgb(222, 222, 222); 
+    background-color: rgb(68, 68, 68); 
     width: 80%; 
     border-radius: 5px; 
 } 
 
 .skill { 
-    background-color: rgb(218, 129, 184); 
+    background-color: rgb(53, 218, 247); 
     color: white; 
     padding: 1%; 
     text-align: right; 

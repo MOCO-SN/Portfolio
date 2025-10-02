@@ -40,8 +40,8 @@
   text-align: center;
   border-radius: 5px;
   width: 350px;
-  box-shadow: 0 0 5px rgb(188, 235, 235), 0 0 10px rgb(0, 255, 255),
-    0 0 20px cyan, 0 0 40px cyan, 0 0 80px cyan;
+  box-shadow: 0 0 5px rgb(112, 112, 112), 0 0 10px rgb(121, 122, 122),
+    0 0 20px rgb(112, 112, 112), 0 0 40px rgb(106, 106, 106), 0 0 80px rgb(101, 101, 101);
 }
 .details h4 {
   font-size: 20px;
