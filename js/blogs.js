@@ -2,7 +2,7 @@ const blogs = [
   {
     title: "Uttrakhand, Haridwar",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/haridwar.jpg",
     description: `I am visiting Haridwar, one of the most sacred cities of Uttarakhand, along with my father. Haridwar is known as the “Gateway to the Gods”, as it lies on the banks of the holy River Ganga and is a major pilgrimage site in India.
         During my visit, I did not see the evening Ganga Aarti at Har Ki Pauri, which is very famous, but I did get the opportunity to take a holy bath in the River Ganga. Bathing in the river is believed to wash away sins and bring peace and blessings. Standing in the cold, flowing waters of the Ganga with my father by my side was a very special and memorable moment for me.
@@ -12,7 +12,7 @@ const blogs = [
   {
     title: "West Bengal, Bagdora (Airport)",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/bagdogra.jpg",
     description: `I recently visited Bagdogra Airport, located in West Bengal, and had a very pleasant experience. The airport is small but well-maintained, clean, and organized, making it easy for travelers to navigate quickly. Despite its size, it provides all the basic facilities, including waiting areas, shops, and food options.
         One of the best things about Bagdogra Airport is its scenic surroundings. Being close to the hills and tea gardens of North Bengal, the airport offers beautiful views of the nearby mountains and landscapes, which is quite refreshing, especially for travelers who love nature.
@@ -21,7 +21,7 @@ const blogs = [
   {
     title: "West Bengal, Kolkata (Airport)",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/kolkata.jpg",
     description: `I recently visited Kolkata Airport, officially known as Netaji Subhas Chandra Bose International Airport, and it was a pleasant experience. The airport is well-maintained, clean, and organized, making it convenient for travelers to move around smoothly. The spacious halls, seating areas, and clear signages create a comfortable environment for passengers.
         The airport also offers good views of the runways and surrounding areas. Watching planes take off and land from the terminal is quite fascinating, especially for someone who enjoys aviation. There are also several shops, restaurants, and lounges, which make waiting for a flight much more enjoyable.
@@ -30,7 +30,7 @@ const blogs = [
   {
     title: "Delhi, Terminal 3(Airport)",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/delhit3.jpg",
     description: `I also recently visited Terminal 3 at Delhi Airport, and it was an amazing experience. Terminal 3 is very modern, spacious, and extremely clean, with wide halls, comfortable seating, and clear signages that make traveling very easy. The facilities, including lounges, restaurants, and shops, are excellent and cater to all kinds of travelers.
         One of the highlights of Terminal 3 is its impressive view. From large glass windows, you can see airplanes taking off and landing, the bustling runways, and the airport grounds, which is quite exciting, especially for someone who enjoys observing airport operations.
@@ -39,7 +39,7 @@ const blogs = [
   {
     title: "Delhi, Terminal 1(Airport)",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/delhit1.jpg",
     description: `I recently visited Terminal 1 at Delhi Airport, and I was very impressed by the experience. The terminal is very clean, well-maintained, and organized, making it easy for travelers to navigate. The spacious halls and seating areas provide a comfortable environment for waiting and relaxing.
         One of the best things about Terminal 1 is its excellent view. From certain areas, you can see the runways, planes taking off and landing, and the surrounding airport landscape, which is quite fascinating, especially for someone who loves aviation.
@@ -48,7 +48,7 @@ const blogs = [
   {
     title: "Uttrakhand, Gopeshwar, Chamoli (IT Gopeshwar)",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/chamoli.jpg",
     description: `I am visiting Gopeshwar, a beautiful hill town in the Chamoli district of Uttarakhand. Surrounded by snow-covered Himalayan peaks, green valleys, and forests, Gopeshwar is known for its natural beauty and peaceful atmosphere. It is also home to the ancient Gopeshwar Mahadev Temple, dedicated to Lord Shiva, which is an important place of devotion for visitors.
         I will be spending one week in Gopeshwar along with my father. During this time, I plan to explore the surroundings, learn about the culture, and also focus on my studies in the calm environment of the mountains. The fresh air, quiet surroundings, and scenic landscapes make it an ideal place to stay and study without distraction. 
@@ -57,7 +57,7 @@ const blogs = [
     {
     title: "Uttrakhand, Alaknanda River",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/alkhanada.jpg",
     description: `I am visiting the Alaknanda River in Uttarakhand along with my father. The Alaknanda is one of the two main headstreams of the holy River Ganga. It flows through the mountains of Uttarakhand, creating breathtaking views of valleys, hills, and villages along its banks.
         The river is not only beautiful but also very sacred. Many important pilgrimage towns like Badrinath, Rudraprayag, and Devprayag lie on the banks of the Alaknanda. At Devprayag, the Alaknanda meets the Bhagirathi River, and together they form the holy Ganga.
@@ -67,7 +67,7 @@ const blogs = [
   {
     title: "Uttrakhand, Reshikesh",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/reshikesh2.jpg",
     description: `I am visiting Uttarakhand, a state in northern India that is well known for its breathtaking Himalayan views, holy rivers, and peaceful environment. Often called the “Devbhoomi” or Land of the Gods, Uttarakhand is famous for its temples, yoga centers, and spiritual atmosphere.
         During this trip, I am going to Rishikesh, one of the most famous cities of Uttarakhand. Rishikesh is located on the banks of the River Ganga and is known as the Yoga Capital of the World. It attracts people from all over the globe who come here to practice yoga, meditation, and to experience its spiritual energy. The city is also known for adventure activities like river rafting, camping, and trekking. Some beautiful places to see in Rishikesh include Laxman Jhula, Ram Jhula, Triveni Ghat (for the evening Ganga Aarti), and the peaceful ashrams along the river.
@@ -76,7 +76,7 @@ const blogs = [
   {
     title: "Uttrakhand, Dehradunn",
     author: "Sachin",
-    date: "Oct 14, 2025",
+    date: "Oct 2, 2025",
     image: "photos/dehradunisbt.jpg",
     description: `I am visiting Uttarakhand, a beautiful state in northern India, which is often called the “Land of the Gods” because of its many temples, rivers, and scenic mountains. Uttarakhand is famous for its natural beauty, with the Himalayas, rivers like the Ganga and Yamuna, forests, and hill stations that attract visitors from all over the world.
         During my trip, I am visiting Dehradun, the capital city of Uttarakhand. Dehradun is known for its pleasant weather, greenery, and peaceful surroundings. It is also famous for places like Robber’s Cave, Sahastradhara, Forest Research Institute, and nearby hill stations such as Mussoorie. The city has a mix of modern life and natural charm, making it a perfect destination to relax and explore.
