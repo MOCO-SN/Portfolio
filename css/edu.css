@@ -1,5 +1,13 @@
+:root {
+    --main-brand-color: #9f9f9f; /* A nice shade of blue */
+    --text-color: #333333; 
+    --backgrund-color:white;
+    --borders:#454545;
+}
+
+
 .card-section {
-    color: white;
+    color: var(--text-color);
 }
 .card-section.is-active {
     display: block;
@@ -19,7 +27,7 @@
     position: relative;
 }
 .card-timeline:after {
-    background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgb(81, 204, 204) 100%);
+    background: linear-gradient(to top, rgba(57, 57, 57, 0) 0%, rgb(81, 204, 204) 100%);
     content: "";
     left: 42px;
     width: 2px;
@@ -52,7 +60,7 @@
     text-indent: -35px;
     border-radius: 50%;
     color: rgba(255, 255, 255, 0.7);
-    background: linear-gradient(to bottom, #a0aee3 0%, #51cacc 100%);
+    background: linear-gradient(to bottom, #33eacb 0%, #51cacc 100%);
 }
 .card-item-title {
     font-weight: 500;

@@ -1,5 +1,4 @@
 const familyData = [
-  { src: "/slide_images/unknown_male.png", title: "My Grandfather", name: "Maheshwar Singh" },
   { src: "/slide_images/unknown_female.png", title: "My Grandmother", name: "Sakuntla Devi" },
   { src: "/slide_images/unknown_female.png", title: "My Maternal Grandmother", name: "Sujanti Uraw" },
   { src: "/slide_images/unknown_male.png", title: "My Father", name: "Manoj Kumar Singh" },

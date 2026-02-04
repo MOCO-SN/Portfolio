@@ -1,0 +1,12 @@
+
+    .text-wrapper {
+        display: flex;
+        gap: 10px;
+        font:italic;
+        font-size: 1.5rem;
+    }
+
+    .change-text {
+        font-weight: bold;
+        transition: opacity 0.5s ease;
+    }

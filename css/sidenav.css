@@ -1,8 +1,8 @@
 .menu button{
   padding:2px;
-  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0);
   border: none;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .menu button ion-icon{
@@ -17,7 +17,9 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #000000;
+  background: rgba(255, 255, 255, 0.289);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -28,14 +30,14 @@
   text-decoration: none;
   font-size: 25px;
   border:2px solid transparent;
-  color: #818181;
+  color: #030303;
   display: block;
   transition: 0.3s;
 }
 
 .phone_nav .phone_navi:hover {
-  background: rgb(179, 179, 179);
-  border:2px solid white;
+  background: rgba(156, 156, 156, 0.581);
+  border:2px solid rgb(0, 0, 0);
 }
 
 .phone_nav .closebtn {

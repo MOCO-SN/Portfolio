@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/image_main.css">
     <meta name="theme-color" content="#06c1db">
+    <link rel="stylesheet" href="./css/changing.css">
     <link rel="stylesheet" href="./css/supproted.css">
     <link rel="stylesheet" href="./css/accessgps.css">
     <link rel="stylesheet" href="./css/edu.css">
@@ -42,7 +43,7 @@
             <h3 class="h3">Notifications !</h3>
             <hr>
             <p>This website is Made By <b>Sachin.</b><br>
-                It contain info. about me.<br>UI Version V7.0 <br>Updated on 02-10-2025</p>
+                It contain info. about me.<br>UI Version V8.1 <br>Updated on 04-02-2026</p>
             <hr><button class="btnok" id="okBtn">OK</button>
             <button class="btnupdate" id="updateBtn">Contact</button>
         </div>
@@ -50,7 +51,7 @@
     <div class="scroll-line"></div>
 
     <div class="topnav">
-        <div class="logo">MOCO SN</div>
+        <div class="logo">MOCO <strong style="color: aqua;">SN</strong></div>
         <div class="menu"> <button onclick="openNav()"><ion-icon name="menu-outline"></ion-icon></button></div>
     </div>
 
@@ -86,14 +87,14 @@
         <div class="image-container">
             <!-- <img src="./photos/hero-min.jpg" alt="Image"> -->
             <!-- <img src="./slide_images/home_main.jpg" alt="Image"> -->
-            <img src="./photos/new.jpg" alt="Image">
+            <img class="img-hero" src="./photos/new.jpg" alt="Image">
 
             <!-- https://firebasestorage.googleapis.com/v0/b/moco-player-f396a.appspot.com/o/profile%2Flove.jpg?alt=media&token=32fe6447-1883-4cfe-9e77-fe12fc0f9b7d -->
             <div class="overlay">
                 <h2>Welcome!</h2>
                 <p>Hey ! I'm Sachin and you ?</p>
                 <a target="_blank"
-                    href="https://firebasestorage.googleapis.com/v0/b/moco-player-f396a.appspot.com/o/profile%2FCV%20Or%20Resume.pdf?alt=media&token=3acbdf26-82d7-405d-a9a3-1033ab91816d">
+                    href="https://firebasestorage.googleapis.com/v0/b/moco-player-f396a.appspot.com/o/sachinpro.surge.sh%2FCV%20Or%20Resume.pdf?alt=media&token=94b53791-aab0-41f3-ab4e-8ff93567138c">
                     <button>Download Resume or CV.</button>
                 </a>
                  <!-- <a target=" _blank" href="./resume_or_cv/CV Or Resume.pdf"">
@@ -120,9 +121,10 @@
         <div class="main">
             <img loading="lazy" src="photos/img_1.jpg" alt="my_img" />
             <h4>I'm Sachin Patel</h4>
-            <p>I am a website and application Developer of Android and Windows also.
-                <!-- <br> And i am also Web and App Developer. -->
-            </p>
+          <div class="text-wrapper">
+            <div>I'm working as </div>
+            <div class="change-text">a Developer</div>
+            </div>
         </div>
     </section>
     <section id="education-section">
@@ -274,24 +276,24 @@
         <!-- ✅ Media / Social Links -->
         <div class="link-media">
             <a href="https://github.com/MOCO-SN" target="_blank">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub">
-            </a>
+               <ion-icon name="logo-github"></ion-icon>
+              </a>
             <a href="https://twitter.com/" target="_blank">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/x.svg" alt="Twitter">
+                <ion-icon name="logo-twitter"></ion-icon>
             </a>
             <a href="https://www.linkedin.com/in/sachin-patel-b5106a295" target="_blank">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
-            </a>
+         <ion-icon name="logo-linkedin"></ion-icon>
+         </a>
             <a href="https://www.instagram.com/_sachin_2006_01/" target="_blank">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram">
-            </a>
+               <ion-icon name="logo-instagram"></ion-icon>
+                 </a>
         </div>
         <hr>
         <!-- Footer Note -->
         <p class="links-text">
             <u>This Website is Made by Sachin Patel.<br>
                 This Website is Made for show only Personal Profile.<br>
-                This profile is note a private.</u>
+                This profile is not a private.</u>
         </p>
     </section>
 
@@ -304,12 +306,13 @@
 <script src="./js/photos.js"></script>
 <script src="./js/project.js"></script>
 <script src="./js/blogs.js"></script>
+<script src="./js/changingtxt.js"></script>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
   import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
-  // ✅ Firebase config
+//   // ✅ Firebase config
   const firebaseConfig = { 
     apiKey: "AIzaSyCYW3AxavIoamXcve-CUoGB0tDlLwmSpRs",
     authDomain: "collage-porject-final.firebaseapp.com",
@@ -413,5 +416,6 @@
     });
   });
 </script>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>

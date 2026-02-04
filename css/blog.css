@@ -1,3 +1,11 @@
+
+:root {
+    --main-brand-color: #9f9f9f; /* A nice shade of blue */
+    --text-color: #333333; 
+    --backgrund-color:white;
+    --borders:#454545;
+}
+
 .blogs-main{
     display: flex;
     margin: 0px;
@@ -6,6 +14,7 @@
 .img-blog{
     animation: loading linear;
     animation-timeline: view();
+    border-radius: 10px;
     animation-range: entry 0% cover 40%;
 }
 
@@ -24,6 +33,8 @@
     height: 300px;
     aspect-ratio: 3/3;
     object-fit: cover;
+    border-radius:10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     margin: 10px 20px 10px;
 }
 .disc{
@@ -31,11 +42,11 @@
 }
 a{
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
     font: bolder;
 }
 #blog-section{
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
 }
 .blog-title{
     font:bolder;
@@ -54,7 +65,7 @@ a{
         object-fit: cover;
         width:auto;
         margin: 10px 30px 10px;
-        border-radius: 2px;
+        border-radius: 10px;
     }
     .blog-content{
         margin: 10px 30px 10px;
