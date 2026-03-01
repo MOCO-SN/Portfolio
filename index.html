@@ -43,7 +43,7 @@
             <h3 class="h3">Notifications !</h3>
             <hr>
             <p>This website is Made By <b>Sachin.</b><br>
-                It contain info. about me.<br>UI Version V8.1 <br>Updated on 04-02-2026</p>
+                It contain info. about me.<br>UI Version V8.2 <br>Updated on 01-03-2026</p>
             <hr><button class="btnok" id="okBtn">OK</button>
             <button class="btnupdate" id="updateBtn">Contact</button>
         </div>
@@ -51,20 +51,21 @@
     <div class="scroll-line"></div>
 
     <div class="topnav">
-        <div class="logo">MOCO <strong style="color: aqua;">SN</strong></div>
+        <div class="logo"><img src="./favicon.png"></div>
         <div class="menu"> <button onclick="openNav()"><ion-icon name="menu-outline"></ion-icon></button></div>
     </div>
 
     <div class="nav">
         <div class="sidenav">
+                    <div class="logo_side"><img src="./favicon.png"></div>
             <ul>
                 <li class="list active"><a href="#home-section">Home</a></li>
-                <li class="list"><a href="#photos-section">Photos</a></li>
                 <li class="list"><a href="#about-section">About</a></li>
                 <li class="list"><a href="#education-section">Education</a></li>
                 <li class="list"><a href="#projects-section">Projects</a></li>
                 <li class="list"><a href="#certifications-section">Certifications</a></li>
                 <li class="list"><a href="#supported-section">Supported</a></li>
+                <li class="list"><a href="#photos-section">Photos</a></li>
                 <li class="list"><a href="#blog-section">Blog</a></li>
                 <li class="list"><a href="#links-section">Links</a></li>
             </ul>
@@ -73,12 +74,12 @@
     <div id="mySidenav" class="phone_nav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a class="phone_navi" href="#home-section">Home</a>
-        <a class="phone_navi" href="#photos-section">Photos</a>
         <a class="phone_navi" href="#about-section">About</a>
         <a class="phone_navi" href="#education-section">Education</a>
         <a class="phone_navi" href="#projects-section">Projects</a>
         <a class="phone_navi" href="#certifications-section">Certifications</a>
         <a class="phone_navi" href="#supported-section">Supported</a>
+        <a class="phone_navi" href="#photos-section">Photos</a>
         <a class="phone_navi" href="#blog-section">Blog</a>
         <a class="phone_navi" href="#links-section">Links</a>
     </div>
@@ -103,17 +104,6 @@
             </div>
         </div>
     </section>
-    <section id="photos-section">
-                    <h3>Photos
-                        <hr>
-                    </h3>
-                    <div class="image-grid" id="imageGrid"></div>
-                    <!-- Modal -->
-                    <div id="imageModal" class="modal">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                        <img class="modal-content" id="modalImage">
-                    </div>
-    </section>
     <section id="about-section">
         <h3>About
             <hr>
@@ -134,7 +124,7 @@
         <div class="edu-main">
             <div class="card-section" id="feels">
                 <div class="card-content">
-                    <div class="card-subtitle">Time-Line</div>
+                    <div class="card-Subtitle">Time-Line</div>
                     <div class="card-timeline">
                         <div class="card-item" data-year="2019">
                             <div class="card-item-title">8<sup>th</sup> All Subject.<span></span></div>
@@ -225,14 +215,64 @@
         <h3>Badges & Certifications
             <hr>
         </h3>
-        <div class="image-certificate">
-            <img loading="lazy" class="imgs" src="./certificates/badge_report.png" alt="Image - certificates" />
-            <img loading="lazy" class="imgs" src="./certificates/CyberEssentials.png" alt="Image - certificates" />
-            <img loading="lazy" class="imgs" src="./certificates/digital_awareness.png" alt="Image - certificates" />
-            <img loading="lazy" class="imgs" src="./certificates/Introduction_to_Cybersecurity.png"
-                alt="Image - certificates" />
-            <img loading="lazy" class="imgs" src="./certificates/python.png" alt="Image - certificates" />
+         <section id="certifications">
+    <div class="carousel">
+      <div class="card active">
+        <div class="certification">
+          <img class="certification-img"
+            src="/certificates/badge_report.png"
+            alt="Certification Image" data-title="Certification 1">
+          <h2 class="certification-title">Creating Compling</h2>
+          <p class="certification-description">Cisco</p>
         </div>
+      </div>
+      <div class="card">
+        <div class="certification">
+          <img class="certification-img"
+            src="/certificates/CyberEssentials.png"
+            alt="Certification Image" data-title="Certification 2">
+          <h2 class="certification-title">CyberEssentials</h2>
+          <p class="certification-description">Cisco</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="certification">
+          <img class="certification-img"
+            src="/certificates/digital_awareness.png"
+            alt="Certification Image" data-title="Certification 2">
+          <h2 class="certification-title">Digital Awareness</h2>
+          <p class="certification-description">Cisco</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="certification">
+          <img class="certification-img"
+            src="/certificates/Introduction_to_Cybersecurity.png"
+            alt="Certification Image" data-title="Certification 2">
+          <h2 class="certification-title">Intro. to Cybersecurity</h2>
+          <p class="certification-description">Cisco</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="certification">
+          <img class="certification-img"
+            src="/certificates/python.png"
+            alt="Certification Image" data-title="Certification 2">
+          <h2 class="certification-title">Python</h2>
+          <p class="certification-description">Cisco</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Unified Modal -->
+  <div id="previewModal" class="image-modal">
+    <span class="close-btn">&times;</span>
+    <div class="modal-content">
+      <img id="modalImg">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-subtitle" id="modalSubtitle"></div>
+    </div>
+  </div>
     </section>
     <section id="supported-section">
         <h3>Supported
@@ -243,6 +283,17 @@
                 <div class="wrapper-supported" id="familyWrapper"></div>
             </div>
         </div>
+    </section>
+        <section id="photos-section">
+                    <h3>Photos
+                        <hr>
+                    </h3>
+                    <div class="image-grid" id="imageGrid"></div>
+                    <!-- Modal -->
+                    <div id="imageModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <img class="modal-content" id="modalImage">
+                    </div>
     </section>
     <section id="blog-section">
         <h3>Blogs
@@ -414,6 +465,67 @@
       modal.classList.remove("active");
       await saveClientInfo(false);
     });
+  });
+
+  // certifications
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+    /* === CERTIFICATION CAROUSEL === */
+    const cards = document.querySelectorAll("#certifications .card");
+    let activeIndex = 0;
+
+    function updateCards(index) {
+      activeIndex = index;
+      const total = cards.length;
+      cards.forEach((card, i) => {
+        card.classList.remove("active", "left", "right", "hidden");
+        const leftIndex = (activeIndex - 1 + total) % total;
+        const rightIndex = (activeIndex + 1) % total;
+        if (i === activeIndex) card.classList.add("active");
+        else if (i === leftIndex) card.classList.add("left");
+        else if (i === rightIndex) card.classList.add("right");
+        else card.classList.add("hidden");
+      });
+    }
+    cards.forEach((card, index) => { card.addEventListener("click", () => updateCards(index)); });
+    updateCards(0);
+
+    /* === IMAGE MODAL === */
+    const modal = document.getElementById("previewModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSubtitle = document.getElementById("modalSubtitle");
+    const closeBtn = modal.querySelector(".close-btn");
+
+    // Open modal for certifications
+    const certImages = document.querySelectorAll(".certification-img");
+    certImages.forEach(img => {
+      img.addEventListener("click", function (e) {
+        e.stopPropagation(); // Prevent carousel click
+        modal.style.display = "flex";
+        modalImg.src = this.src;
+        modalTitle.textContent = this.dataset.title || "";
+        modalSubtitle.textContent = "";
+      });
+    });
+
+    // Open modal for gallery
+    const galleryCards = document.querySelectorAll("#img-gallery .card");
+    galleryCards.forEach(card => {
+      card.addEventListener("click", function () {
+        modal.style.display = "flex";
+        modalImg.src = this.dataset.img;
+        modalTitle.textContent = this.dataset.title || "";
+        modalSubtitle.textContent = this.dataset.subtitle || "";
+      });
+    });
+
+    // Close modal
+    closeBtn.onclick = () => { modal.style.display = "none"; };
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") modal.style.display = "none"; });
+
   });
 </script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
