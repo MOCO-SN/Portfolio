@@ -10,7 +10,7 @@
   transform: rotate3d();
   position: fixed;
   top: 0;
-  animation-name: load;
+
   animation-duration: 10s;
   left: 0;
   width: 100%;
@@ -123,4 +123,449 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
   }
+}
+
+
+/* From Uiverse.io by andrew-manzyk - Complete Loader with Progress Bar */
+.website-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgb(0, 0, 0);
+    border: 2px transparent solid;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.website-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* Original Loader Styles */
+.loader {
+    --color-one: #ffbf48;
+    --color-two: #be4a1d;
+    --color-three: #ffbf4780;
+    --color-four: #bf4a1d80;
+    --color-five: #ffbf4740;
+    --time-animation: 2s;
+    --size: 1;
+    position: relative;
+    border-radius: 50%;
+    transform: scale(var(--size));
+    box-shadow:
+        0 0 25px 0 var(--color-three),
+        0 20px 50px 0 var(--color-four);
+    animation: colorize calc(var(--time-animation) * 3) ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-top: solid 1px var(--color-one);
+    border-bottom: solid 1px var(--color-two);
+    background: linear-gradient(180deg, var(--color-five), var(--color-four));
+    box-shadow:
+        inset 0 10px 10px 0 var(--color-three),
+        inset 0 -10px 10px 0 var(--color-four);
+}
+
+.loader .box {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(
+        180deg,
+        var(--color-one) 30%,
+        var(--color-two) 70%
+    );
+    mask: url(#clipping);
+    -webkit-mask: url(#clipping);
+}
+
+.loader svg {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.loader svg #clipping {
+    filter: contrast(15);
+    animation: roundness calc(var(--time-animation) / 2) linear infinite;
+}
+
+.loader svg #clipping polygon {
+    filter: blur(7px);
+}
+
+.loader svg #clipping polygon:nth-child(1) {
+    transform-origin: 75% 25%;
+    transform: rotate(90deg);
+}
+
+.loader svg #clipping polygon:nth-child(2) {
+    transform-origin: 50% 50%;
+    animation: rotation var(--time-animation) linear infinite reverse;
+}
+
+.loader svg #clipping polygon:nth-child(3) {
+    transform-origin: 50% 60%;
+    animation: rotation var(--time-animation) linear infinite;
+    animation-delay: calc(var(--time-animation) / -3);
+}
+
+.loader svg #clipping polygon:nth-child(4) {
+    transform-origin: 40% 40%;
+    animation: rotation var(--time-animation) linear infinite reverse;
+}
+
+.loader svg #clipping polygon:nth-child(5) {
+    transform-origin: 40% 40%;
+    animation: rotation var(--time-animation) linear infinite reverse;
+    animation-delay: calc(var(--time-animation) / -2);
+}
+
+.loader svg #clipping polygon:nth-child(6) {
+    transform-origin: 60% 40%;
+    animation: rotation var(--time-animation) linear infinite;
+}
+
+.loader svg #clipping polygon:nth-child(7) {
+    transform-origin: 60% 40%;
+    animation: rotation var(--time-animation) linear infinite;
+    animation-delay: calc(var(--time-animation) / -1.5);
+}
+
+/* Animations */
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes roundness {
+    0% {
+        filter: contrast(15);
+    }
+    20% {
+        filter: contrast(3);
+    }
+    40% {
+        filter: contrast(3);
+    }
+    60% {
+        filter: contrast(15);
+    }
+    100% {
+        filter: contrast(15);
+    }
+}
+
+@keyframes colorize {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    20% {
+        filter: hue-rotate(-30deg);
+    }
+    40% {
+        filter: hue-rotate(-60deg);
+    }
+    60% {
+        filter: hue-rotate(-90deg);
+    }
+    80% {
+        filter: hue-rotate(-45deg);
+    }
+    100% {
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* Loading Text Styles */
+.loading-text {
+    color: rgb(56, 58, 58);
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    animation: textPulse 2s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+
+.loading-dots {
+    display: inline-block;
+}
+
+.loading-dots::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+    width: 30px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-one), var(--color-two));
+    border-radius: 10px;
+    position: relative;
+    animation: progressAnimation 3s ease-in-out infinite;
+    box-shadow: 0 0 15px var(--color-one);
+}
+
+/* Animated progress fill with gradient shine */
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgb(2, 238, 251),
+        transparent
+    );
+    animation: shine 1.5s infinite;
+}
+
+/* Percentage text */
+.progress-percentage {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 8px;
+    text-align: center;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    animation: percentagePulse 2s ease-in-out infinite;
+}
+
+/* Different progress bar styles */
+
+/* Style 1: Striped progress bar */
+.progress-bar.striped .progress-fill {
+    background: linear-gradient(
+        45deg,
+        var(--color-one) 25%,
+        var(--color-two) 25%,
+        var(--color-two) 50%,
+        var(--color-one) 50%,
+        var(--color-one) 75%,
+        var(--color-two) 75%,
+        var(--color-two)
+    );
+    background-size: 30px 30px;
+    animation: progressAnimation 3s ease-in-out infinite,
+               stripeMove 1s linear infinite;
+}
+
+/* Style 2: Glowing progress bar */
+.progress-bar.glow .progress-fill {
+    box-shadow: 
+        0 0 20px var(--color-one),
+        0 0 40px var(--color-two);
+}
+
+/* Style 3: Segmented progress bar */
+.progress-bar.segmented .progress-fill {
+    background: repeating-linear-gradient(
+        90deg,
+        var(--color-one),
+        var(--color-one) 15px,
+        var(--color-two) 15px,
+        var(--color-two) 30px
+    );
+}
+
+/* Style 4: Double color progress bar */
+.progress-bar.double-color .progress-fill {
+    background: linear-gradient(
+        90deg,
+        var(--color-one) 0%,
+        var(--color-two) 50%,
+        var(--color-one) 100%
+    );
+    background-size: 200% 100%;
+    animation: progressAnimation 3s ease-in-out infinite,
+               gradientMove 2s linear infinite;
+}
+
+/* Additional Animations */
+@keyframes progressAnimation {
+    0% {
+        width: 0%;
+    }
+    25% {
+        width: 35%;
+    }
+    50% {
+        width: 65%;
+    }
+    75% {
+        width: 85%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes stripeMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 30px 0;
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes percentagePulse {
+    0%, 100% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+        text-shadow: 0 0 15px var(--color-one);
+    }
+}
+
+@keyframes dots {
+    0%, 20% {
+        content: '.';
+    }
+    40% {
+        content: '..';
+    }
+    60%, 100% {
+        content: '...';
+    }
+}
+
+@keyframes textPulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+        text-shadow: 0 0 20px rgba(255, 191, 72, 0.5);
+    }
+}
+
+/* Loading Subtext */
+.loading-subtext {
+    color: rgba(92, 86, 86, 0.8);
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 1px;
+    animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loader {
+        --size: 0.8;
+    }
+    
+    .loading-text {
+        font-size: 22px;
+    }
+    
+    .progress-percentage {
+        font-size: 16px;
+    }
+    
+    .loading-subtext {
+        font-size: 14px;
+    }
+}
+
+/* Dark/Light mode variants */
+.website-loader.dark {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+.website-loader.light {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.website-loader.light .loading-text,
+.website-loader.light .progress-percentage,
+.website-loader.light .loading-subtext {
+    color: #333;
 }

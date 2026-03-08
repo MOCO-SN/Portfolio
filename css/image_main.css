@@ -29,31 +29,293 @@
   }
 
   /* Styling for the text */
-  .overlay h2 {
+.overlay h2 {
     font-size: 50px;
     margin: 10px;
-  }
-  .overlay p{
+    color: white;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.overlay p {
     font-size: 20px;
     margin: 10px;
-  }
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 
+        1px 1px 3px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Alternative high contrast options */
+
+/* Option 1: Dark overlay background for text */
+.overlay.dark-text-bg h2,
+.overlay.dark-text-bg p {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: inline-block;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Option 2: Text stroke effect */
+.overlay.stroke-text h2 {
+    color: white;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+    text-stroke: 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Option 3: Gradient text for extra pop */
+.overlay.gradient-text h2 {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Option 4: Light background behind text */
+.overlay.light-bg-text h2,
+.overlay.light-bg-text p {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 15px 25px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Option 5: Boxed text with border */
+.overlay.boxed-text h2,
+.overlay.boxed-text p {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px 25px;
+    border-radius: 8px;
+    border-left: 4px solid white;
+    text-align: left;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Option 6: Multiple shadows for maximum contrast */
+.overlay.max-contrast h2 {
+    text-shadow: 
+        3px 3px 0 rgba(0, 0, 0, 0.8),
+        6px 6px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: 800;
+}
+
+.overlay.max-contrast p {
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.8),
+        4px 4px 8px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .overlay h2 {
+        font-size: 32px;
+        text-shadow: 
+            1px 1px 3px rgba(0, 0, 0, 0.7),
+            0 0 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    .overlay p {
+        font-size: 16px;
+        padding: 0 20px;
+        text-shadow: 
+            1px 1px 2px rgba(0, 0, 0, 0.7),
+            0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Responsive adjustments for alternative options */
+    .overlay.dark-text-bg h2,
+    .overlay.dark-text-bg p,
+    .overlay.light-bg-text h2,
+    .overlay.light-bg-text p,
+    .overlay.boxed-text h2,
+    .overlay.boxed-text p {
+        padding: 10px 15px;
+        margin: 10px;
+    }
+}
+
+/* For very dark background images */
+.overlay.on-dark-image h2,
+.overlay.on-dark-image p {
+    color: white;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.8),
+        0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* For very light background images */
+.overlay.on-light-image h2,
+.overlay.on-light-image p {
+    color: #333;
+    text-shadow: 
+        0 1px 2px rgba(255, 255, 255, 0.8),
+        0 2px 4px rgba(255, 255, 255, 0.5);
+}
 
   /* Styling for the button */
-  .overlay button {
+.overlay button {
     padding: 10px 20px;
+     font-weight: 600;
+    letter-spacing: 0.5px;
     font-size: 20px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.15);
     color: white;
     border: 2px transparent solid;
-    backdrop-filter:blur(5px);
+    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(10px);
     cursor: pointer;
-  }
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
 
-  .overlay button:hover {
-    padding: 10px 20px;
+/* Border animation - bottom to top */
+.overlay button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
 
+.overlay button:hover::before {
+    height: 100%;
+}
+
+.overlay button:hover {
     border: 2px rgb(255, 255, 255) solid;
     background-color: rgba(255, 255, 255, 0.15);
-  }
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Alternative: Border slide from left */
+.overlay button.slide-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.overlay button.slide-left:hover::before {
+    left: 0;
+}
+
+/* Alternative: Border expand from center */
+.overlay button.expand-center {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay button.expand-center::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.overlay button.expand-center:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Alternative: Border glow pulse */
+.overlay button.glow-pulse {
+    animation: none;
+}
+
+.overlay button.glow-pulse:hover {
+    animation: pulse 1.5s infinite;
+    border: 2px rgb(255, 255, 255) solid;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* Alternative: Double border animation */
+.overlay button.double-border {
+    position: relative;
+}
+
+.overlay button.double-border::before,
+.overlay button.double-border::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.overlay button.double-border::before {
+    top: -2px;
+    left: -2px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+}
+
+.overlay button.double-border::after {
+    bottom: -2px;
+    right: -2px;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.overlay button.double-border:hover::before,
+.overlay button.double-border:hover::after {
+    width: 30px;
+    height: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .overlay button {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+}
