@@ -145,7 +145,7 @@ const blogs = [
     author: "Sachin",
     date: "Nov 29, 2024",
     image: "photos/durga_puja_2024.jpeg",
-    description: `I celebrated Durga Puja in 2023 with great joy and devotion in my hometown. 
+    description: `I celebrated Durga Puja in 2024 with great joy and devotion in my hometown. 
         Durga Puja is one of the biggest and most vibrant festivals in India, dedicated to Goddess Durga and 
         her victory over evil. The entire atmosphere was filled with excitement, beautiful decorations, and the 
         sound of devotional music.
@@ -155,7 +155,7 @@ const blogs = [
         One of the most memorable parts of the festival was the evening aarti and the cultural programs 
         held near the pandals. Watching the devotion of people and being part of such a lively environment 
         gave me a deep sense of happiness and connection.
-        Durga Puja 2023 was truly a joyful and memorable experience for me, filled with devotion, 
+        Durga Puja 2024 was truly a joyful and memorable experience for me, filled with devotion, 
         togetherness, and festive spirit that I will always cherish.`,
   },
   {
@@ -215,7 +215,7 @@ const blogs = [
     author: "Sachin",
     date: "Nov 30, 2023",
     image: "photos/durga_puja_2023.jpeg",
-    description: `Durga Puja 2024 was another beautiful and unforgettable celebration for me. 
+    description: `Durga Puja 2023 was another beautiful and unforgettable celebration for me. 
         This year, I spent more time exploring different pandals and fully enjoying the festive spirit with my family.
         The energy and enthusiasm during the festival were truly amazing.
         I visited many creatively designed pandals, each showcasing stunning idols of Goddess Durga along with impressive
@@ -224,7 +224,7 @@ const blogs = [
         One of the highlights of this year was spending peaceful moments during the aarti, where the sound of bells,
          chants, and drums created a divine atmosphere. I also enjoyed local foods and sweets, which added to the joy 
          of the celebration.
-        Durga Puja 2024 gave me a deeper appreciation for our traditions and culture. 
+        Durga Puja 2023 gave me a deeper appreciation for our traditions and culture. 
         Celebrating it with my loved ones made it even more meaningful, and the memories from this festival will stay 
         with me forever.`,
   },
