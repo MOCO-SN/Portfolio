@@ -9,14 +9,13 @@
 
 .button-85 {
   padding: 0.7em 2em;
-  border: 1px solid white;
+  border: none;
   outline: none;
-  
   width: 220px;
   font-size: 1rem;
   font-weight: bold;
-  color: #3f3f3f;
-  background: #a2a1a1;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0096a0 0%, #007c85 100%);
   cursor: pointer;
   position: relative;
   z-index: 0;
@@ -24,53 +23,92 @@
   user-select: none;
   overflow: hidden;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 150, 160, 0.3),
+              0 2px 4px rgba(0, 0, 0, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.button-85::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+  z-index: -1;
 }
 
 .button-85:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(177, 176, 176, 0.3);
-  border: 1px solid rgb(138, 138, 138);
-  background: #ece9e9;
-  
-
-}
-@keyframes glowing-button-85 {
-  0% { background-position: 0 0; }
-  50% { background-position: 400% 0; }
-  100% { background-position: 0 0; }
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 150, 160, 0.4),
+              0 4px 8px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #00a8b3 0%, #008f9a 100%);
 }
 
-.button-85:after {
-  z-index: -1;
+.button-85:hover::before {
+  left: 100%;
+}
+
+.button-85:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 150, 160, 0.3),
+              0 1px 2px rgba(0, 0, 0, 0.1),
+              inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #007f90 0%, #006b78 100%);
+  transition: all 0.1s ease;
+}
+
+/* Ripple effect container */
+.button-85::after {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #d3d0d0;
-  left: 0;
   top: 0;
-  border-radius: 8px;
-    box-shadow: rgba(8, 23, 40, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #ffffff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10);
+  opacity: 0;
+  transition: transform 0.5s, opacity 1s;
+}
 
+.button-85:active::after {
+  transform: scale(0);
+  opacity: 0.3;
+  transition: 0s;
 }
 
 .links-text {
   text-align: center;
   margin-top: 25px;
-  background: rgba(204, 204, 204, 0.104);
-  color: #222121;
+  background: rgba(0, 150, 160, 0.1);
+  color: #4f585e;
   font-size: 0.95rem;
   line-height: 1.5;
   padding: 12px 20px;
   border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 20px 40px -10px inset,
-              rgba(0, 0, 0, 0.3) 0px 14px 28px -14px inset;
+  box-shadow: 0 4px 15px rgba(0, 150, 160, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 150, 160, 0.2);
 }
 
 .links-text u {
-  text-decoration-color: #1bedf1;
+  text-decoration-color: #0096a0;
+  text-decoration-thickness: 2px;
 }
+
 .link-media {
   display: flex;
   gap: 20px;
@@ -80,12 +118,29 @@
 .link-media a ion-icon {
   width: 32px;
   margin: 10px;
-  color: #222121;
+  color: #4f585e;
   height: 32px;
-  transition: transform 0.3s, filter 0.3s;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              filter 0.3s ease,
+              color 0.3s ease;
 }
 
 .link-media a ion-icon:hover {
-  transform: scale(1.2);
-  color: #0ce0d6;
+  transform: scale(1.3) translateY(-2px);
+  color: #0096a0;
+  filter: drop-shadow(0 4px 8px rgba(0, 150, 160, 0.4));
+}
+
+/* Floating animation for buttons */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
   }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.button-85:hover {
+  animation: none; /* Disable float on hover to allow lift effect */
+}
