@@ -20,7 +20,7 @@ window.projects = [
     title: "School Management System",
     description: "A comprehensive Java-based login system for educational institutions.",
     image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=200&fit=crop&auto=format",
-    demoLink: "/error_pages/error.html",
+    demoLink: "https://newtest.mocosn.in/",
     codeLink: "/error_pages/error.html",
     details: "A robust school management login portal developed purely in Java. Features include multi-user role authentication (students, teachers, admin), password encryption, session management, and a clean, intuitive GUI. Built with Swing for the interface and file-based storage for user data.",
     screenshots: [
@@ -149,6 +149,21 @@ window.projects = [
     ],
     techStack: ["Arduino", "Ultrasonic Sensor", "Servo Motor", "Processing", "C++"],
     createdAt: "April 2025"
+  },
+  {
+    id: 11,
+    title: "Teacher's Website",
+    description: "A website for teachers to manage their classes and students.",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=200&fit=crop&auto=format",
+    demoLink: "https://teacher.mocosn.in/",
+    codeLink: "/error_pages/error.html",
+    details: "A comprehensive web platform designed for teachers to efficiently manage their classes and students. Features include attendance tracking, grade management, assignment distribution, student profiles, class schedules, and communication tools for parent-teacher interaction. Built with modern web technologies for a seamless experience.",
+    screenshots: [
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=300&fit=crop&auto=format"
+    ],
+    techStack: ["HTML5", "CSS3", "JavaScript"],
+    createdAt: "March 2026"
   }
 ];
 
@@ -170,7 +185,8 @@ projects.forEach(project => {
       "Moco Player": "🎮",
       "MOCOSN TOOLS": "🔧",
       "Unmanned Multifunctional Surveying Vehicle": "🚗",
-      "Radar System": "📡"
+      "Radar System": "📡",
+      "Teacher's Website": "👨‍🏫"
     };
     return icons[title] || "📁";
   };

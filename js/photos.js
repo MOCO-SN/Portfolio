@@ -70,7 +70,7 @@ const images = [
   { src: "./photos/oldimg.jpg", alt: "Punrea" },
   { src: "./photos/frdm1.jpeg", alt: "Gujarat" },
   { src: "./photos/frdm.jpeg", alt: "Gujarat" },
-  { src: "./photos/mukeshpersonal.jpg", alt: "My frnd." }
+  { src: "./photos/mukeshpersonal.jpg", alt: "Roommate." }
 ];
 
 const imageGrid = document.getElementById("imageGrid");
