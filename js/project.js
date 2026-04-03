@@ -1,6 +1,22 @@
 window.projects = [
   {
     id: 1,
+    title: "Phone Info",
+    description: "A modern getting information about phone number website.",
+    image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
+    demoLink: "https://phoneinfo.mocosn.in/",
+    codeLink: "/error_pages/error.html",
+    details: "A fully responsive website built with modern HTML5, CSS3, Python and JavaScript. to getting information about phone number.",
+    screenshots: [
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop&auto=format"
+    ],
+    techStack: ["HTML5", "CSS3", "JavaScript", "Python", "Flask"],
+    createdAt: "March 2026"
+    },
+  {
+    id: 1,
     title: "Application Website",
     description: "A modern web platform for mod application submissions and management.",
     image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
