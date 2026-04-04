@@ -6,8 +6,5 @@
     "dev": "vercel dev",
     "build": "vercel build",
     "start": "vercel dev"
-  },
-  "dependencies": {
-    "nodemailer": "^6.9.0"
   }
 }
