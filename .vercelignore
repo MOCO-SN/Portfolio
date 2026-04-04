@@ -1,0 +1,14 @@
+.git
+node_modules
+*.md
+css/
+js/
+photos/
+certificates/
+projects/
+slide_images/
+LoginSystem/
+error_pages/
+res/
+test.v
+send_visitor_email.php

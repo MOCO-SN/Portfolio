@@ -112,7 +112,7 @@ window.projects = [
     description: "Advanced mod menu system with native library injection capabilities.",
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=200&fit=crop&auto=format",
     demoLink: "https://www.mediafire.com/folder/ijom0vpjccbwy/Moco+Player",
-    codeLink: "/error_pages/error.html",
+    codeLink: "https://mocoplayer.interiorsita.com/",
     details: "A sophisticated mod menu framework allowing seamless library injection into APKs. Combines Java UI components with C++ native hooks for maximum performance. Features include memory editing, function hooking, and a plugin system for extending functionality.",
     screenshots: [
       "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=300&fit=crop&auto=format",

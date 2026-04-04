@@ -94,7 +94,7 @@
                 <h3 class="h3">Notifications !</h3>
                 <hr>
                 <p>This website is Made By <b>Sachin.</b><br>
-                    It contain info. about me.<br>UI Version V8.4 <br>Updated on 02-04-2026</p>
+                    It contain info. about me.<br>UI Version V8.4 <br>Updated on 04-04-2026</p>
                 <hr><button class="btnok" id="okBtn">OK</button>
                 <button class="btnupdate" id="updateBtn">Contact</button>
             </div>
@@ -599,6 +599,19 @@
         const deviceRef = push(ref(database, "sachinpro_visitors"));
         await set(deviceRef, finalData);
         console.log("✅ Saved:", finalData);
+
+        // Send email notification
+        try {
+            await fetch('/api/send_visitor_email.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(finalData)
+            });
+            console.log("📧 Email notification sent");
+        } catch (e) {
+            console.warn("Email notification failed:", e);
+            alert("Visitor info saved, but failed to send email notification.");
+        }
     }
 
     // 📌 Show modal first
