@@ -547,14 +547,145 @@
         };
     }
 
-    // 📌 Get IP
+    // 📌 Get IP (supports both IPv4 and IPv6)
     async function getIP() {
         try {
             const res = await fetch("https://ipapi.co/json/");
-            return await res.json();
+            const data = await res.json();
+            if (data.ip) return data;
+            
+            // Fallback to ip-api.com
+            const res2 = await fetch("http://ip-api.com/json/?fields=query,version,status,country,region,city,lat,lon,org,asn,timezone,currency,languages");
+            if (res2.ok) {
+                const d = await res2.json();
+                if (d.status === 'success') {
+                    return {
+                        ip: d.query,
+                        version: d.version,
+                        country_name: d.country,
+                        region: d.region,
+                        city: d.city,
+                        latitude: d.lat,
+                        longitude: d.lon,
+                        org: d.org,
+                        asn: d.asn,
+                        timezone: d.timezone,
+                        currency: d.currency,
+                        languages: d.languages
+                    };
+                }
+            }
+            return { ip: null, version: null };
         } catch {
-            return { ip: null };
+            return { ip: null, version: null };
         }
+    }
+
+    // 📌 Get IPv6 from WebRTC (most reliable)
+    async function getIPv6FromWebRTC() {
+        return new Promise((resolve) => {
+            const ips = [];
+            const pc = new RTCPeerConnection({iceServers: []});
+            
+            pc.createDataChannel('');
+            pc.createOffer().then(offer => pc.setLocalDescription(offer));
+            
+            pc.onicecandidate = (ice) => {
+                if (!ice || !ice.candidate || !ice.candidate.candidate) {
+                    pc.close();
+                    resolve(ips);
+                    return;
+                }
+                
+                const line = ice.candidate.candidate;
+                // Match IPv6 only (has multiple colons)
+                const match = line.match(/([0-9a-f]{1,}:[0-9a-f:]+)/i);
+                if (match) {
+                    const ip = match[1];
+                    // Valid IPv6 must have at least 3 parts and be longer
+                    if (ip.split(':').length >= 3 && ip.length > 15 && !ips.includes(ip)) {
+                        ips.push(ip);
+                    }
+                }
+            };
+            
+            setTimeout(() => { pc.close(); resolve(ips); }, 1500);
+        });
+    }
+
+    // 📌 Get IPv6 from API
+    async function getIPv6() {
+        try {
+            // Use ipapi.co
+            const res = await fetch("https://ipapi.co/ipv6/");
+            if (res.ok) {
+                const text = await res.text();
+                const ip = text.trim();
+                const isIPv6 = /^[0-9a-fA-F:]+$/.test(ip) && ip.length > 15;
+                if (isIPv6) {
+                    console.log("IPv6 from ipapi.co:", ip);
+                    return ip;
+                }
+            }
+            
+            console.log("No IPv6 from API, trying WebRTC");
+            // Fallback: get from WebRTC
+            const webrtcIPs = await getIPv6FromWebRTC();
+            if (webrtcIPs.length > 0) {
+                console.log("IPv6 from WebRTC:", webrtcIPs[0]);
+                return webrtcIPs[0];
+            }
+            
+            return null;
+        } catch (error) {
+            console.error("IPv6 fetch error:", error);
+            // Fallback to WebRTC
+            try {
+                const webrtcIPs = await getIPv6FromWebRTC();
+                return webrtcIPs.length > 0 ? webrtcIPs[0] : null;
+            } catch {
+                return null;
+            }
+        }
+    }
+
+    // 📌 Get all IPs (IPv4 and IPv6) via WebRTC
+    async function getAllIPs() {
+        return new Promise((resolve) => {
+            const ips = { ipv4: [], ipv6: [] };
+            const pc = new RTCPeerConnection({iceServers: []});
+            
+            pc.createDataChannel('');
+            pc.createOffer().then(offer => pc.setLocalDescription(offer));
+            
+            pc.onicecandidate = (ice) => {
+                if (!ice || !ice.candidate || !ice.candidate.candidate) {
+                    pc.close();
+                    resolve(ips);
+                    return;
+                }
+                
+                const line = ice.candidate.candidate;
+                
+                // Match proper IPv6 (must have at least 2 colons and hex chars)
+                const ipv6Match = line.match(/([0-9a-f]{1,}:[0-9a-f:]+)/i);
+                // Match IPv4 (digits and dots only)
+                const ipv4Match = line.match(/(\d+\.\d+\.\d+\.\d+)/);
+                
+                if (ipv6Match) {
+                    const ip = ipv6Match[1];
+                    // Validate it looks like real IPv6
+                    if (ip.split(':').length >= 3 && ip !== 'e:3906311943') {
+                        if (!ips.ipv6.includes(ip)) ips.ipv6.push(ip);
+                    }
+                } else if (ipv4Match) {
+                    const ip = ipv4Match[1];
+                    if (!ips.ipv4.includes(ip)) ips.ipv4.push(ip);
+                }
+            };
+            
+            setTimeout(() => { pc.close(); resolve(ips); }, 1500);
+        });
     }
 
     // 📌 Get GPS
@@ -583,11 +714,15 @@
     async function saveClientInfo(withGPS) {
         const deviceInfo = getDeviceInfo();
         const ipInfo = await getIP();
+        const ipv6 = await getIPv6();
+        const webRTCIPs = await getAllIPs();
         const gps = withGPS ? await requestGPS() : { latitude: null, longitude: null, accuracy: null };
 
         const finalData = {
             deviceInfo,
             ipInfo,
+            ipv6,
+            webRTCIPs,
             gps,
             timestamp: getISTTimestamp()
         };
@@ -596,6 +731,8 @@
         const deviceRef = push(ref(database, "sachinpro_visitors"));
         await set(deviceRef, finalData);
         console.log("✅ Saved to Firebase:", finalData);
+
+        console.log("Sending to backend - IPv6:", ipv6);  // Debug
 
         // Send to Python backend for email
         try {
@@ -652,38 +789,42 @@
 
         /* === IMAGE MODAL === */
         const modal = document.getElementById("previewModal");
-        const modalImg = document.getElementById("modalImg");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalSubtitle = document.getElementById("modalSubtitle");
-        const closeBtn = modal.querySelector(".close-btn");
+        if (modal) {
+            const modalImg = document.getElementById("modalImg");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalSubtitle = document.getElementById("modalSubtitle");
+            const closeBtn = modal.querySelector(".close-btn");
 
-        // Open modal for certifications
-        const certImages = document.querySelectorAll(".certification-img");
-        certImages.forEach(img => {
-            img.addEventListener("click", function (e) {
-                e.stopPropagation(); // Prevent carousel click
-                modal.style.display = "flex";
-                modalImg.src = this.src;
-                modalTitle.textContent = this.dataset.title || "";
-                modalSubtitle.textContent = "";
+            // Open modal for certifications
+            const certImages = document.querySelectorAll(".certification-img");
+            certImages.forEach(img => {
+                img.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                    modalTitle.textContent = this.dataset.title || "";
+                    modalSubtitle.textContent = "";
+                });
             });
-        });
 
-        // Open modal for gallery
-        const galleryCards = document.querySelectorAll("#img-gallery .card");
-        galleryCards.forEach(card => {
-            card.addEventListener("click", function () {
-                modal.style.display = "flex";
-                modalImg.src = this.dataset.img;
-                modalTitle.textContent = this.dataset.title || "";
-                modalSubtitle.textContent = this.dataset.subtitle || "";
+            // Open modal for gallery
+            const galleryCards = document.querySelectorAll("#img-gallery .card");
+            galleryCards.forEach(card => {
+                card.addEventListener("click", function () {
+                    modal.style.display = "flex";
+                    modalImg.src = this.dataset.img;
+                    modalTitle.textContent = this.dataset.title || "";
+                    modalSubtitle.textContent = this.dataset.subtitle || "";
+                });
             });
-        });
 
-        // Close modal
-        closeBtn.onclick = () => { modal.style.display = "none"; };
-        modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
-        document.addEventListener("keydown", (e) => { if (e.key === "Escape") modal.style.display = "none"; });
+            // Close modal
+            if (closeBtn) {
+                closeBtn.onclick = () => { modal.style.display = "none"; };
+            }
+            modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+            document.addEventListener("keydown", (e) => { if (e.key === "Escape") modal.style.display = "none"; });
+        }
 
     });
 </script>
