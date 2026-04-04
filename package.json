@@ -1,0 +1,13 @@
+{
+  "name": "sachinprofile-visitor",
+  "version": "1.0.0",
+  "description": "Visitor tracking system for sachinprofile.in",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.0"
+  }
+}

@@ -1,5 +1,11 @@
 {
-    "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html" }
-    ]
+  "rewrites": [
+    { "source": "/api/send_visitor_email.php", "destination": "/api/send_visitor_email.js" }
+  ],
+  "functions": [
+    {
+      "runtime": "nodejs18.x",
+      "src": "api/"
+    }
+  ]
 }

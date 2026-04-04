@@ -602,7 +602,7 @@
 
         // Send email notification
         try {
-            await fetch('/api/send_visitor_email.php', {
+            await fetch('/api/send_visitor_email.js', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(finalData)

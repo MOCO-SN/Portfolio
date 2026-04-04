@@ -11,4 +11,5 @@ LoginSystem/
 error_pages/
 res/
 test.v
-send_visitor_email.php
+api/*.php
+composer.json
