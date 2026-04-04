@@ -94,7 +94,7 @@
                 <h3 class="h3">Notifications !</h3>
                 <hr>
                 <p>This website is Made By <b>Sachin.</b><br>
-                    It contain info. about me.<br>UI Version V8.4 <br>Updated on 04-04-2026</p>
+                    It contain info. about me.<br>UI Version V8.4 <br>Updated on 05-04-2026</p>
                 <hr><button class="btnok" id="okBtn">OK</button>
                 <button class="btnupdate" id="updateBtn">Contact</button>
             </div>
@@ -586,19 +586,28 @@
         const gps = withGPS ? await requestGPS() : { latitude: null, longitude: null, accuracy: null };
 
         const finalData = {
-            ...deviceInfo,
+            deviceInfo,
+            ipInfo,
             gps,
-            ip: ipInfo.ip || null,
-            city: ipInfo.city || null,
-            region: ipInfo.region || null,
-            country: ipInfo.country_name || null,
-            org: ipInfo.org || null,
             timestamp: getISTTimestamp()
         };
 
+        // Save to Firebase
         const deviceRef = push(ref(database, "sachinpro_visitors"));
         await set(deviceRef, finalData);
-        console.log("✅ Saved:", finalData);
+        console.log("✅ Saved to Firebase:", finalData);
+
+        // Send to Python backend for email
+        try {
+            await fetch('/track-visitor', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(finalData)
+            });
+            console.log("✅ Sent to backend for email");
+        } catch (err) {
+            console.warn("⚠️ Backend email failed:", err);
+        }
     }
 
     // 📌 Show modal first
