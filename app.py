@@ -1,8 +1,12 @@
+import logging
 from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
-import json
 
-app = Flask(__name__, template_folder='template', static_folder='template', static_url_path='') 
+# Suppress 304 Not Modified logs
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.WARNING)
+
+app = Flask(__name__, template_folder='template', static_folder='template', static_url_path='')
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -13,11 +17,57 @@ app.config['MAIL_DEFAULT_SENDER'] = 'sachinpatel34242@gmail.com'
 
 mail = Mail(app)
 
-def send_visitor_email(user_ip, device_info=None, ip_info=None, gps=None):
+def get_client_ip():
+    ips = []
+    
+    # Try to get all IPs from X-Forwarded-For (can contain both IPv4 and IPv6)
+    if request.environ.get('HTTP_X_FORWARDED_FOR'):
+        forwarded = request.environ['HTTP_X_FORWARDED_FOR'].split(',')
+        ips.extend([ip.strip() for ip in forwarded])
+    
+    # Check X-Real-IP
+    if request.environ.get('HTTP_X_REAL_IP'):
+        real_ip = request.environ['HTTP_X_REAL_IP'].strip()
+        if real_ip not in ips:
+            ips.append(real_ip)
+    
+    # Fallback to remote_addr
+    if request.environ.get('REMOTE_ADDR'):
+        remote_ip = request.environ['REMOTE_ADDR'].strip()
+        if remote_ip not in ips:
+            ips.append(remote_ip)
+    
+    return ips if ips else ["Unknown"]
+
+def is_ipv6(ip):
+    if not ip:
+        return False
+    return ':' in ip
+
+def classify_ips(ips):
+    ipv4 = []
+    ipv6 = []
+    for ip in ips:
+        if is_ipv6(ip):
+            ipv6.append(ip)
+        else:
+            ipv4.append(ip)
+    return ipv4, ipv6
+
+def send_visitor_email(ips, device_info=None, ip_info=None, gps=None):
+    ipv4, ipv6 = classify_ips(ips)
+    
     body = f"New visitor to Sachin's Profile\n\n"
-    body += f"IP: {user_ip}\n\n"
+    
+    if ipv4:
+        body += f"IPv4: {', '.join(ipv4)}\n"
+    if ipv6:
+        body += f"IPv6: {', '.join(ipv6)}\n"
     
     if ip_info:
+        body += f"\n--- IPAPI Info ---\n"
+        body += f"API IP: {ip_info.get('ip', 'N/A')}\n"
+        body += f"IP Type: {ip_info.get('version', 'N/A')}\n"
         body += f"Location: {ip_info.get('city', 'N/A')}, {ip_info.get('region', 'N/A')}, {ip_info.get('country_name', 'N/A')}\n"
         body += f"Organization: {ip_info.get('org', 'N/A')}\n\n"
     
@@ -43,11 +93,7 @@ def send_visitor_email(user_ip, device_info=None, ip_info=None, gps=None):
 
 @app.route('/')
 def index():
-    if request.environ.get('HTTP_X_FORWARDED_FOR'):
-        user_ip = request.environ['HTTP_X_FORWARDED_FOR'].split(',')[0]
-    else:
-        user_ip = request.remote_addr
-
+    ips = get_client_ip()
     return render_template("index.html")
 
 @app.route('/track-visitor', methods=['POST'])
@@ -55,15 +101,13 @@ def track_visitor():
     try:
         data = request.get_json()
         
-        user_ip = request.remote_addr
-        if request.environ.get('HTTP_X_FORWARDED_FOR'):
-            user_ip = request.environ['HTTP_X_FORWARDED_FOR'].split(',')[0]
+        ips = get_client_ip()
         
         device_info = data.get('deviceInfo')
         ip_info = data.get('ipInfo')
         gps = data.get('gps')
         
-        send_visitor_email(user_ip, device_info, ip_info, gps)
+        send_visitor_email(ips, device_info, ip_info, gps)
         
         return jsonify({"status": "success"})
     except Exception as e:
