@@ -599,19 +599,6 @@
         const deviceRef = push(ref(database, "sachinpro_visitors"));
         await set(deviceRef, finalData);
         console.log("✅ Saved:", finalData);
-
-        // Send email notification
-        try {
-            await fetch('/api/send_visitor_email.js', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(finalData)
-            });
-            console.log("📧 Email notification sent");
-        } catch (e) {
-            console.warn("Email notification failed:", e);
-            alert("Visitor info saved, but failed to send email notification.");
-        }
     }
 
     // 📌 Show modal first
