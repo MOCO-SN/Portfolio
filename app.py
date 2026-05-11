@@ -540,15 +540,14 @@ html += """
 </html>
 """
 
-
-    msg = Message(
+msg = Message(
         subject="🔥 New Visitor - mocosn.in",
         recipients=["sachinpatel34241@gmail.com"]
     )
 
-    msg.html = html
+msg.html = html
 
-    mail.send(msg)
+mail.send(msg)
 
 @app.route('/')
 def index():
