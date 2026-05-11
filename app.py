@@ -139,183 +139,335 @@ def send_visitor_email(ips, device_info=None, ip_info=None, gps=None,
     visit_time = timestamp or datetime.now().strftime('%Y-%m-%d %H:%M:%S IST')
 
     ipv4, ipv6_server = classify_ips(ips)
-
     html = f"""
     <!DOCTYPE html>
     <html>
     <head>
-        <style>
-            body {{
-                background: #0f172a;
-                color: #ffffff;
-                font-family: Arial, sans-serif;
-                padding: 20px;
-            }}
+    <meta charset="UTF-8">
 
-            .container {{
-                max-width: 700px;
-                margin: auto;
-                background: #111827;
-                border-radius: 16px;
-                overflow: hidden;
-                box-shadow: 0 0 25px rgba(0,0,0,0.4);
-            }}
+    <style>
 
-            .header {{
-                background: linear-gradient(135deg, #2563eb, #7c3aed);
-                padding: 25px;
-                text-align: center;
-            }}
+    body {{
+        margin: 0;
+        padding: 30px;
+        background: #030712;
+        font-family: Arial, sans-serif;
+        color: white;
+    }}
 
-            .header h1 {{
-                margin: 0;
-                font-size: 28px;
-            }}
+    .main {{
+        max-width: 850px;
+        margin: auto;
+    }}
 
-            .section {{
-                padding: 20px;
-                border-bottom: 1px solid #1f2937;
-            }}
+    .container {{
+        background: #0f172a;
+        border-radius: 30px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow:
+            0 0 50px rgba(59,130,246,0.18),
+            0 0 120px rgba(139,92,246,0.12);
+    }}
 
-            .title {{
-                font-size: 18px;
-                margin-bottom: 15px;
-                color: #60a5fa;
-            }}
+    .hero {{
+        padding: 50px 35px;
+        text-align: center;
+        background:
+            radial-gradient(circle at top left, #2563eb, transparent 40%),
+            radial-gradient(circle at bottom right, #7c3aed, transparent 40%),
+            linear-gradient(135deg, #111827, #0f172a);
+    }}
 
-            .card {{
-                background: #1e293b;
-                padding: 14px;
-                border-radius: 10px;
-                margin-bottom: 10px;
-            }}
+    .hero-icon {{
+        font-size: 58px;
+        margin-bottom: 15px;
+    }}
 
-            .label {{
-                color: #93c5fd;
-                font-weight: bold;
-            }}
+    .hero h1 {{
+        margin: 0;
+        font-size: 34px;
+        font-weight: bold;
+        color: white;
+    }}
 
-            .footer {{
-                text-align: center;
-                padding: 20px;
-                font-size: 13px;
-                color: #9ca3af;
-            }}
+    .hero p {{
+        margin-top: 12px;
+        color: #cbd5e1;
+        font-size: 15px;
+    }}
 
-            .badge {{
-                display: inline-block;
-                padding: 5px 10px;
-                border-radius: 20px;
-                background: #2563eb;
-                color: white;
-                font-size: 12px;
-            }}
+    .live {{
+        display: inline-block;
+        margin-top: 18px;
+        background: linear-gradient(135deg,#2563eb,#7c3aed);
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: bold;
+    }}
 
-            a {{
-                color: #60a5fa;
-                text-decoration: none;
-            }}
-        </style>
+    .content {{
+        padding: 30px;
+    }}
+
+    .section {{
+        margin-bottom: 35px;
+    }}
+
+    .section-title {{
+        font-size: 20px;
+        font-weight: bold;
+        color: #60a5fa;
+        margin-bottom: 18px;
+    }}
+
+    .grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+        gap: 15px;
+    }}
+
+    .card {{
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 20px;
+        padding: 18px;
+    }}
+
+    .label {{
+        font-size: 12px;
+        color: #94a3b8;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }}
+
+    .value {{
+        font-size: 15px;
+        font-weight: bold;
+        color: white;
+        word-break: break-word;
+    }}
+
+    .large-card {{
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 20px;
+        padding: 20px;
+        margin-top: 15px;
+    }}
+
+    .footer {{
+        text-align: center;
+        padding: 25px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        color: #64748b;
+        font-size: 13px;
+    }}
+
+    .highlight {{
+        color: #60a5fa;
+    }}
+
+    @media(max-width:700px) {{
+
+        body {{
+            padding: 10px;
+        }}
+
+        .hero {{
+            padding: 35px 20px;
+        }}
+
+        .hero h1 {{
+            font-size: 26px;
+        }}
+
+        .content {{
+            padding: 18px;
+        }}
+
+    }}
+
+    </style>
     </head>
 
     <body>
 
+    <div class="main">
+
     <div class="container">
 
-        <div class="header">
-            <h1>🔥 New Visitor Detected</h1>
-            <p>Sachin's Profile Tracker</p>
-        </div>
+    <!-- HERO -->
+    <div class="hero">
 
-        <div class="section">
-            <div class="title">📅 Visit Information</div>
+    <div class="hero-icon">🔥</div>
 
-            <div class="card">
-                <span class="label">Visit Time:</span> {visit_time}
-            </div>
+    <h1>
+        New Visitor Detected
+    </h1>
 
-            <div class="card">
-                <span class="label">IPv6:</span>
-                {ipv6 if ipv6 and ipv6 != "null" else "Not Available"}
-            </div>
-        </div>
+    <p>
+        Real-time visitor analytics from mocosn.in
+    </p>
+
+    <div class="live">
+        ● LIVE TRACKING ENABLED
+    </div>
+
+    </div>
+
+    <div class="content">
+
+    <!-- VISIT -->
+    <div class="section">
+
+    <div class="section-title">
+    📅 Visit Information
+    </div>
+
+    <div class="grid">
+
+    <div class="card">
+    <div class="label">Visit Time</div>
+    <div class="value">{visit_time}</div>
+    </div>
+
+    <div class="card">
+    <div class="label">IPv6</div>
+    <div class="value">
+    {ipv6 if ipv6 and ipv6 != "null" else "Not Available"}
+    </div>
+    </div>
+
+    </div>
+    </div>
     """
 
     # IP INFO
     if ip_info:
         html += f"""
         <div class="section">
-            <div class="title">🌍 IP Information</div>
 
-            <div class="card"><span class="label">IP:</span> {ip_info.get('ip', 'N/A')}</div>
-            <div class="card"><span class="label">Version:</span> {ip_info.get('version', 'N/A')}</div>
-            <div class="card"><span class="label">Country:</span> {ip_info.get('country_name', 'N/A')}</div>
-            <div class="card"><span class="label">Region:</span> {ip_info.get('region', 'N/A')}</div>
-            <div class="card"><span class="label">City:</span> {ip_info.get('city', 'N/A')}</div>
-            <div class="card"><span class="label">Postal:</span> {ip_info.get('postal', 'N/A')}</div>
-            <div class="card"><span class="label">Timezone:</span> {ip_info.get('timezone', 'N/A')}</div>
-            <div class="card"><span class="label">Latitude:</span> {ip_info.get('latitude', 'N/A')}</div>
-            <div class="card"><span class="label">Longitude:</span> {ip_info.get('longitude', 'N/A')}</div>
-            <div class="card"><span class="label">Organization:</span> {ip_info.get('org', 'N/A')}</div>
-            <div class="card"><span class="label">ASN:</span> {ip_info.get('asn', 'N/A')}</div>
+        <div class="section-title">
+        🌍 IP Information
+        </div>
+
+        <div class="grid">
+
+        <div class="card">
+        <div class="label">IP Address</div>
+        <div class="value">{ip_info.get('ip', 'N/A')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">Country</div>
+        <div class="value">{ip_info.get('country_name', 'N/A')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">Region</div>
+        <div class="value">{ip_info.get('region', 'N/A')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">City</div>
+        <div class="value">{ip_info.get('city', 'N/A')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">Timezone</div>
+        <div class="value">{ip_info.get('timezone', 'N/A')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">ISP / Org</div>
+        <div class="value">{ip_info.get('org', 'N/A')}</div>
+        </div>
+
+        </div>
+
         </div>
         """
 
     # WEBRTC
     if webrtc_ips:
-        webrtc_ipv4 = webrtc_ips.get('ipv4', [])
-        webrtc_ipv6 = webrtc_ips.get('ipv6', [])
-
         html += f"""
         <div class="section">
-            <div class="title">📡 WebRTC IPs</div>
 
-            <div class="card">
-                <span class="label">IPv4:</span>
-                {', '.join(webrtc_ipv4) if webrtc_ipv4 else 'N/A'}
-            </div>
+        <div class="section-title">
+        📡 WebRTC Information
+        </div>
 
-            <div class="card">
-                <span class="label">IPv6:</span>
-                {', '.join(webrtc_ipv6) if webrtc_ipv6 else 'N/A'}
-            </div>
+        <div class="grid">
+
+        <div class="card">
+        <div class="label">IPv4</div>
+        <div class="value">
+        {', '.join(webrtc_ips.get('ipv4', [])) if webrtc_ips.get('ipv4') else 'N/A'}
+        </div>
+        </div>
+
+        <div class="card">
+        <div class="label">IPv6</div>
+        <div class="value">
+        {', '.join(webrtc_ips.get('ipv6', [])) if webrtc_ips.get('ipv6') else 'N/A'}
+        </div>
+        </div>
+
+        </div>
+
         </div>
         """
-
-    # SERVER IPS
-    html += f"""
-    <div class="section">
-        <div class="title">🖥 Server Detected IPs</div>
-
-        <div class="card">
-            <span class="label">IPv4:</span>
-            {', '.join(ipv4) if ipv4 else 'N/A'}
-        </div>
-
-        <div class="card">
-            <span class="label">IPv6:</span>
-            {', '.join(ipv6_server) if ipv6_server else 'N/A'}
-        </div>
-    </div>
-    """
 
     # DEVICE INFO
     if device_info:
         html += f"""
         <div class="section">
-            <div class="title">📱 Device Information</div>
 
-            <div class="card"><span class="label">Platform:</span> {device_info.get('platform', 'N/A')}</div>
-            <div class="card"><span class="label">Language:</span> {device_info.get('language', 'N/A')}</div>
-            <div class="card"><span class="label">Screen:</span> {device_info.get('screenWidth', 'N/A')}x{device_info.get('screenHeight', 'N/A')}</div>
-            <div class="card"><span class="label">Timezone:</span> {device_info.get('timezone', 'N/A')}</div>
-            <div class="card"><span class="label">Referrer:</span> {device_info.get('referrer', 'N/A')}</div>
-            <div class="card"><span class="label">Page:</span> {device_info.get('pageURL', 'N/A')}</div>
+        <div class="section-title">
+        📱 Device Information
+        </div>
 
-            <div class="card">
-                <span class="label">User Agent:</span><br><br>
-                {device_info.get('userAgent', 'N/A')}
-            </div>
+        <div class="grid">
+
+        <div class="card">
+        <div class="label">Platform</div>
+        <div class="value">{device_info.get('platform', 'N/A')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">Language</div>
+        <div class="value">{device_info.get('language', 'N/A')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">Screen Size</div>
+        <div class="value">
+        {device_info.get('screenWidth', 'N/A')} × {device_info.get('screenHeight', 'N/A')}
+        </div>
+        </div>
+
+        <div class="card">
+        <div class="label">Timezone</div>
+        <div class="value">{device_info.get('timezone', 'N/A')}</div>
+        </div>
+
+        </div>
+
+        <div class="large-card">
+
+        <div class="label">
+        User Agent
+        </div>
+
+        <div class="value" style="font-size:13px; line-height:1.8;">
+        {device_info.get('userAgent', 'N/A')}
+        </div>
+
+        </div>
+
         </div>
         """
 
@@ -323,31 +475,48 @@ def send_visitor_email(ips, device_info=None, ip_info=None, gps=None,
     if gps and gps.get('latitude'):
         html += f"""
         <div class="section">
-            <div class="title">📍 GPS Location</div>
 
-            <div class="card">
-                <span class="label">Latitude:</span> {gps.get('latitude')}
-            </div>
-
-            <div class="card">
-                <span class="label">Longitude:</span> {gps.get('longitude')}
-            </div>
-
-            <div class="card">
-                <span class="label">Accuracy:</span> {gps.get('accuracy')} meters
-            </div>
+        <div class="section-title">
+        📍 GPS Location
         </div>
-        """
+
+        <div class="grid">
+
+        <div class="card">
+        <div class="label">Latitude</div>
+        <div class="value">{gps.get('latitude')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">Longitude</div>
+        <div class="value">{gps.get('longitude')}</div>
+        </div>
+
+        <div class="card">
+        <div class="label">Accuracy</div>
+        <div class="value">{gps.get('accuracy')} meters</div>
+        </div>
+
+        </div>
+
+        </div>
+    """
 
     html += """
-        <div class="footer">
-            Generated automatically from mocosn.in visitor tracker
-        </div>
 
     </div>
+
+    <div class="footer">
+        Generated automatically by mocosn.in analytics system
+    </div>
+
+    </div>
+    </div>
+
     </body>
     </html>
     """
+    
 
     msg = Message(
         subject="🔥 New Visitor - mocosn.in",
