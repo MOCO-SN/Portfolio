@@ -1,6 +1,29 @@
 const blogs = [
   {
-    title: "Uttrakhand, Haridwar",
+    title: "Jharkhand, Hatia",
+    author: "Sachin",
+    date: "Jun 9, 2026",
+    image: "photos/hatia.jpg",
+    description: `During my visit to Hatia in Jharkhand, I had the wonderful opportunity to travel with my father and explore this vibrant area. Hatia is known for its peaceful surroundings, railway connectivity, and its importance as an industrial hub near Ranchi.
+    We spent time exploring the local markets where we discovered traditional handicrafts, local products, and delicious Jharkhandi food. The warmth and friendliness of the local people made the experience even more memorable.
+    One of the highlights of our journey was visiting the beautiful Hatia Dam. The calm water, scenic landscapes, and fresh air created a peaceful atmosphere that allowed us to relax and enjoy nature together. Watching the sunset near the dam was a particularly unforgettable moment.
+    Beyond the tourist attractions, simply walking through the streets of Hatia gave me a deeper appreciation of the region's culture, traditions, and everyday life. Spending quality time with my father throughout this trip made the experience truly special.
+    This journey to Hatia will always remain close to my heart, filled with beautiful memories, meaningful conversations, and unforgettable experiences.`
+  },
+
+  {
+    title: "Jharkhand, Ranchi",
+    author: "Sachin",
+    date: "Jun 8, 2026",
+    image: "photos/ranchi.jpeg",
+    description: `My trip to Ranchi, the capital city of Jharkhand, was an amazing experience that I shared with my father. Ranchi is often called the "City of Waterfalls" because of its stunning natural beauty and numerous waterfalls.
+    During our visit, we explored various parts of the city, including bustling markets, shopping areas, and popular local food spots. We enjoyed tasting traditional Jharkhand dishes and learning more about the culture and lifestyle of the people living here.
+    The most memorable part of the journey was visiting Hundru Falls. The sight of water cascading from a great height surrounded by lush greenery was breathtaking. The natural beauty and peaceful environment made it one of the most beautiful places I have ever visited.
+    We also spent time exploring Ranchi's parks, viewpoints, and nearby attractions. Everywhere we went, we were greeted by beautiful landscapes and a welcoming atmosphere.
+    Traveling with my father made this experience even more meaningful. The memories we created together while exploring Ranchi's natural wonders, cultural heritage, and vibrant city life will stay with me forever. Ranchi is truly a destination worth visiting for anyone who loves nature, adventure, and culture.`
+  },
+  {
+    title: "Uttarakhand, Haridwar",
     author: "Sachin",
     date: "Oct 2, 2025",
     image: "photos/haridwar.jpg",
@@ -46,7 +69,7 @@ const blogs = [
         I was traveling alone, which made the experience even more peaceful. I enjoyed exploring the terminal, observing the airport operations, and taking in the modern facilities. Overall, Terminal 1 at Delhi Airport is a pleasant and impressive place for travelers, offering both comfort and a great view.`,
   },
   {
-    title: "Uttrakhand, Gopeshwar, Chamoli (IT Gopeshwar)",
+    title: "Uttarakhand, Gopeshwar, Chamoli (IT Gopeshwar)",
     author: "Sachin",
     date: "Oct 2, 2025",
     image: "photos/chamoli.jpg",
@@ -55,7 +78,7 @@ const blogs = [
         This one-week stay will give me a chance to enjoy the beauty of Uttarakhand, understand the local traditions, and spend quality time with my father. It will surely be a memorable and enriching experience that I will always cherish.`,
   },
   {
-    title: "Uttrakhand, Alaknanda River",
+    title: "Uttarakhand, Alaknanda River",
     author: "Sachin",
     date: "Oct 2, 2025",
     image: "photos/alkhanada.jpg",
@@ -65,7 +88,7 @@ const blogs = [
         The Alaknanda River is not only a lifeline for the people of Uttarakhand but also a place of spiritual importance. My visit here with my father will always remain a beautiful memory for me.`,
   },
   {
-    title: "Uttrakhand, Reshikesh",
+    title: "Uttarakhand, Reshikesh",
     author: "Sachin",
     date: "Oct 2, 2025",
     image: "photos/reshikesh2.jpg",
@@ -74,7 +97,7 @@ const blogs = [
         I am visiting Rishikesh with my father, which makes the journey very special. Exploring the holy city, enjoying the natural beauty, and experiencing peace together with him will create memories that I will always treasure.`,
   },
   {
-    title: "Uttrakhand, Dehradunn",
+    title: "Uttarakhand, Dehradunn",
     author: "Sachin",
     date: "Oct 2, 2025",
     image: "photos/dehradunisbt.jpg",
