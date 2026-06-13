@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moco & Us — Our Protected Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(145deg, #fff5f8 0%, #ffe6f0 100%);
+            color: #4a2c2f;
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #ffecf0, #ffe0ea);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease;
+        }
+        .loading-content {
+            text-align: center;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            padding: 2rem;
+        }
+        .loading-heart { font-size: 3rem; color: #e85d8a; animation: pulseHeart 1.2s infinite ease; }
+        @keyframes pulseHeart {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+        .main-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.9s ease;
+        }
+        .main-content.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .unauthorized {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 2rem;
+            max-width: 500px;
+            margin: 10vh auto;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+        }
+        .unauthorized a {
+            color: #e85d8a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .session-warning {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff9800;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            z-index: 1100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: none;
+            animation: fadeInOut 0.5s;
+        }
+        @keyframes fadeInOut {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 2rem; }
+        .hero { text-align: center; margin-bottom: 3rem; }
+        .hero h1 { font-size: 3.5rem; background: linear-gradient(135deg, #d14b6e, #b83b5e); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .memories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .memory-card { background: rgba(255,255,255,0.92); border-radius: 2rem; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .memory-card:hover { transform: translateY(-8px); }
+        .memory-img { width: 100%; height: 240px; object-fit: cover; }
+        .memory-content { padding: 1.4rem; }
+        .memory-title { font-size: 1.5rem; font-weight: 700; color: #be3b62; }
+        .memory-date { background: #ffeef4; display: inline-block; padding: 0.2rem 0.9rem; border-radius: 30px; font-size: 0.75rem; margin: 0.6rem 0; }
+        .love-letter { background: #fff0f5; border-radius: 3rem; padding: 2rem; text-align: center; margin-top: 3rem; }
+        footer { text-align: center; margin-top: 3rem; color: #aa7e8a; }
+        .lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: 0.25s; z-index: 2000; }
+        .lightbox.active { visibility: visible; opacity: 1; }
+        .lightbox-img { max-width: 85vw; max-height: 80vh; border-radius: 1.5rem; border: 3px solid white; }
+        .close-lightbox { position: absolute; top: 25px; right: 35px; color: white; font-size: 2.5rem; cursor: pointer; background: rgba(0,0,0,0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .floating-heart { position: fixed; pointer-events: none; z-index: 999; animation: floatHeart 4s ease-out forwards; }
+        @keyframes floatHeart { 0% { transform: translateY(0) rotate(0deg); opacity: 0.7; } 100% { transform: translateY(-120px) rotate(15deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+        <div class="loading-heart"><i class="fas fa-heart"></i></div>
+        <h2>Verifying access 🔐</h2>
+        <p>Please wait...</p>
+    </div>
+</div>
+
+<div class="main-content" id="mainContent">
+    <div class="container">
+        <div class="hero">
+            <h1><i class="fas fa-heart"></i> Moco & Us <i class="fas fa-heart"></i></h1>
+            <div class="sub">✨ Every moment, a treasure ✨</div>
+            <p>From laughter to whispers, from sunset walks to midnight talks — every second with you, Moco, is a beautiful page in our story.</p>
+        </div>
+        <div id="memoriesGrid" class="memories-grid"></div>
+        <div class="love-letter">
+            <h2><i class="fa-regular fa-message"></i> To my Moco 💌</h2>
+            <p>“Every moment we spent together lives inside my heart like a beautiful photograph. The way you smile, the way you hold my hand — those memories are my greatest treasure. Thank you for being my home. I love you more than all the stars in the sky.”</p>
+            <div class="signature">— Yours forever, with love 🥀</div>
+        </div>
+        <footer><i class="fas fa-infinity"></i> Our journey continues — made with endless love for Moco</footer>
+    </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox"><i class="fas fa-times"></i></span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="memory enlarged">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<div id="sessionWarning" class="session-warning">⚠️ Session expires in <span id="sessionTimer">1:00</span></div>
+
+<script type="module">
+    // ----- Firebase imports for signOut (clean logout) -----
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCYW3AxavIoamXcve-CUoGB0tDlLwmSpRs",
+        authDomain: "collage-porject-final.firebaseapp.com",
+        databaseURL: "https://collage-porject-final-default-rtdb.firebaseio.com",
+        projectId: "collage-porject-final",
+        storageBucket: "collage-porject-final.firebasestorage.app",
+        messagingSenderId: "220400167688",
+        appId: "1:220400167688:web:a6474ac58691259e2c9abd",
+        measurementId: "G-9NJ6QQ4X8G"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // ================= SESSION MANAGEMENT =================
+    const SESSION_DURATION = 15 * 60 * 1000; // 15 minutes
+
+    function isSessionValid(uidFromUrl) {
+        const storedUid = localStorage.getItem('loggedInUserId');
+        const sessionExpiry = localStorage.getItem('sessionExpiry');
+        const lastActivity = localStorage.getItem('lastActivityTime');
+        
+        if (!storedUid || !sessionExpiry || storedUid !== uidFromUrl) return false;
+        
+        const now = Date.now();
+        const expiryTime = parseInt(sessionExpiry, 10);
+        const lastActivityTime = parseInt(lastActivity, 10);
+        
+        if (now > expiryTime) return false;               // absolute timeout
+        if (now - lastActivityTime > SESSION_DURATION) return false; // inactivity
+        return true;
+    }
+
+    function updateActivity() {
+        if (localStorage.getItem('loggedInUserId')) {
+            localStorage.setItem('lastActivityTime', Date.now());
+        }
+    }
+
+    async function clearSessionAndLogout() {
+        localStorage.removeItem('loggedInUserId');
+        localStorage.removeItem('sessionExpiry');
+        localStorage.removeItem('lastActivityTime');
+        try {
+            await signOut(auth);
+        } catch(e) { console.warn("SignOut error", e); }
+        window.location.href = 'index.html';
+    }
+
+    function setupActivityListeners() {
+        const events = ['mousedown', 'keydown', 'touchstart', 'scroll', 'click'];
+        events.forEach(event => document.addEventListener(event, updateActivity));
+    }
+
+    function startSessionMonitoring(uid) {
+        if (!isSessionValid(uid)) {
+            clearSessionAndLogout();
+            return false;
+        }
+        
+        setupActivityListeners();
+        
+        // Session checker every 30 seconds
+        const intervalId = setInterval(() => {
+            if (!isSessionValid(uid)) {
+                clearInterval(intervalId);
+                clearSessionAndLogout();
+            }
+        }, 30000);
+        
+        // Warning counter: show 1 minute before expiry
+        let warningShown = false;
+        const warningInterval = setInterval(() => {
+            const expiry = localStorage.getItem('sessionExpiry');
+            if (expiry) {
+                const timeLeft = parseInt(expiry) - Date.now();
+                if (timeLeft <= 60000 && timeLeft > 0 && !warningShown) {
+                    const warningDiv = document.getElementById('sessionWarning');
+                    if (warningDiv) warningDiv.style.display = 'block';
+                    warningShown = true;
+                    // Update timer every second
+                    const timerUpdate = setInterval(() => {
+                        const nowLeft = parseInt(localStorage.getItem('sessionExpiry')) - Date.now();
+                        if (nowLeft <= 0) {
+                            clearInterval(timerUpdate);
+                        } else {
+                            const seconds = Math.floor(nowLeft / 1000);
+                            const mins = Math.floor(seconds / 60);
+                            const secs = seconds % 60;
+                            const timerSpan = document.getElementById('sessionTimer');
+                            if (timerSpan) timerSpan.innerText = `${mins}:${secs.toString().padStart(2,'0')}`;
+                        }
+                    }, 1000);
+                } else if (timeLeft <= 0) {
+                    clearInterval(warningInterval);
+                }
+            }
+        }, 1000);
+        
+        return true;
+    }
+
+    // ========== SHA256 helper ==========
+    async function sha256(message) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // ========== API FETCHING ==========
+    // Replace these with actual values from your authentication system
+    // const hwid = "test-hwid";          // Should come from device or user session
+    // const token = "test-token";        // Should come from your login process
+    // const apiSecret = "YourSuperSecretKey2025!"; // Must match the server secret
+
+    async function fetchMemoriesFromAPI() {
+    const hwid = "test-hwid";          // Replace with actual HWID
+    const token = "test-token";        // Replace with actual token
+    const apiSecret = "YourSuperSecretKey2025!";
+    
+    // Compute signature
+    const raw = hwid + token + apiSecret;
+    const signature = await sha256(raw);
+    
+    try {
+        const response = await fetch('https://mocoplayer.interiorsita.com/mocosn/get-mocosn-love.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ hwid, token, signature }),
+            mode: 'cors',      // explicit
+            credentials: 'omit' // change if needed
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const result = await response.json();
+        if (result.error) {
+            throw new Error(result.error);
+        }
+        return result.data || [];
+    } catch (error) {
+        console.error('API fetch error:', error);
+        // Fallback to hardcoded data (or show empty)
+        return getFallbackMemories();
+    }
+}
+
+// Fallback data in case API fails
+function getFallbackMemories() {
+    return [
+        { title: "First Sunset date 🌅", date: "March 2024", description: "Golden skies, your hand in mine.", imageUrl: "https://picsum.photos/id/104/400/280" },
+        { title: "Coffee & Laughs ☕", date: "April 2024", description: "Rainy afternoon, endless laughter.", imageUrl: "https://picsum.photos/id/20/400/280" },
+        // ... add more
+    ];
+}
+    // ========== GALLERY RENDERING ==========
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function renderMemories(memoriesData) {
+        const grid = document.getElementById('memoriesGrid');
+        if (!grid) return;
+        
+        if (!memoriesData || memoriesData.length === 0) {
+            grid.innerHTML = '<div class="unauthorized">No memories found. Please check back later.</div>';
+            return;
+        }
+        
+        let html = '';
+        memoriesData.forEach(mem => {
+            // Map API fields to display fields
+            const title = mem.title || "Untitled";
+            const date = mem.date || "";
+            const description = mem.description || mem.message || "";
+            const imageUrl = mem.imageUrl || "https://via.placeholder.com/400x280?text=Image+Not+Found";
+            const subtitle = mem.subtitle || "";
+            
+            html += `
+                <div class="memory-card" data-img="${imageUrl}" data-title="${escapeHtml(title)}" data-desc="${escapeHtml(description)}">
+                    <img class="memory-img" src="${imageUrl}" alt="${escapeHtml(title)}" loading="lazy">
+                    <div class="memory-content">
+                        <div class="memory-title"><i class="fa-regular fa-heart"></i> ${escapeHtml(title)}</div>
+                        <div class="memory-date"><i class="fa-regular fa-calendar"></i> ${escapeHtml(date)}</div>
+                        ${subtitle ? `<div class="memory-subtitle">${escapeHtml(subtitle)}</div>` : ''}
+                        <p class="memory-desc">${escapeHtml(description)}</p>
+                    </div>
+                </div>
+            `;
+        });
+        grid.innerHTML = html;
+        
+        document.querySelectorAll('.memory-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const imgUrl = card.getAttribute('data-img');
+                const title = card.getAttribute('data-title');
+                const desc = card.getAttribute('data-desc');
+                openLightbox(imgUrl, `${title} — ${desc}`);
+            });
+        });
+    }
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    function openLightbox(src, caption) {
+        lightboxImg.src = src;
+        lightboxCaption.innerText = caption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    document.querySelector('.close-lightbox')?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    // Floating hearts
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '<i class="fas fa-heart"></i>';
+        heart.classList.add('floating-heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+        heart.style.color = '#f9a8d4';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+    function startFloatingHearts() {
+        setInterval(() => {
+            if (Math.random() > 0.7) createFloatingHeart();
+        }, 3000);
+    }
+
+    // ========== VERIFICATION + SESSION CHECK + FETCH DATA ==========
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get('uid');
+    const hash = urlParams.get('hash');
+    const secret = "MocoSecretLove2025";
+
+    async function verifyAndInit() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const mainContent = document.getElementById('mainContent');
+        
+        function showErrorAndRedirect(title, message) {
+            loadingScreen.innerHTML = `
+                <div class="unauthorized">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color:#e85d8a;"></i>
+                    <h2>${title}</h2>
+                    <p>${message}</p>
+                    <p>Redirecting to login page in 3 seconds... <br> <a href="index.html">← Click here if not redirected</a></p>
+                </div>
+            `;
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
+        }
+        
+        if (!uid || !hash) {
+            showErrorAndRedirect('🔒 Unauthorized Access', 'Please log in first to view our memories.');
+            return;
+        }
+        
+        const expectedHash = await sha256(uid + secret);
+        if (hash !== expectedHash) {
+            showErrorAndRedirect('⛔ Invalid Token', 'The verification failed. Please log in again.');
+            return;
+        }
+        
+        if (!isSessionValid(uid)) {
+            showErrorAndRedirect('⏰ Session Expired', 'Your session has ended. Please log in again.');
+            return;
+        }
+        
+        // All good: show gallery and start monitoring
+        loadingScreen.style.opacity = "0";
+        setTimeout(() => {
+            loadingScreen.style.display = "none";
+            mainContent.classList.add("visible");
+            startFloatingHearts();
+            startSessionMonitoring(uid);
+        }, 500);
+        
+        // Fetch and render memories from API
+        try {
+            const memories = await fetchMemoriesFromAPI();
+            renderMemories(memories);
+        } catch (error) {
+            console.error('Failed to fetch memories:', error);
+            const grid = document.getElementById('memoriesGrid');
+            if (grid) {
+                grid.innerHTML = `<div class="unauthorized">Unable to load memories. Please try again later. Error: ${error.message}</div>`;
+            }
+        }
+    }
+
+    // Start everything
+    verifyAndInit();
+</script>
+</body>
+</html>
