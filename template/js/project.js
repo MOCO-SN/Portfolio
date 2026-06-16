@@ -1,5 +1,20 @@
 window.projects = [
   {
+    id: 3,
+    title: "Bihar Bhraman",
+    description: "Exploring the bihar with Tourism website.",
+   image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
+    demoLink: "https://biharbhraman.com/",
+    codeLink: "/error_pages/error.html",
+    details: "A sophisticated login system leveraging Java for UI and C++ native methods for core authentication logic. Implements JNI (Java Native Interface) for seamless integration between Java and C++. Features include biometric authentication simulation, hardware-level security checks, and encrypted credential storage.",
+    screenshots: [
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=300&fit=crop&auto=format"
+    ],
+    techStack: ["Java", "C++", "JNI", "Native Development"],
+    createdAt: "July 2025"
+  },
+  {
     id: 12,
     title: "Phone Info",
     description: "A modern getting information about phone number website.",
@@ -36,7 +51,7 @@ window.projects = [
     title: "School Management System",
     description: "A comprehensive Java-based login system for educational institutions.",
     image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=200&fit=crop&auto=format",
-    demoLink: "https://newtest.mocosn.in/",
+    demoLink: "https://mangeschool.mocosn.in/",
     codeLink: "/error_pages/error.html",
     details: "A robust school management login portal developed purely in Java. Features include multi-user role authentication (students, teachers, admin), password encryption, session management, and a clean, intuitive GUI. Built with Swing for the interface and file-based storage for user data.",
     screenshots: [
@@ -46,27 +61,13 @@ window.projects = [
     techStack: ["Java", "Swing", "File I/O"],
     createdAt: "July 2025"
   },
-  {
-    id: 3,
-    title: "Bihar Bihara",
-    description: "Advanced hybrid login system combining Java with native C++ for enhanced security.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=200&fit=crop&auto=format",
-    demoLink: "/error_pages/error.html",
-    codeLink: "/error_pages/error.html",
-    details: "A sophisticated login system leveraging Java for UI and C++ native methods for core authentication logic. Implements JNI (Java Native Interface) for seamless integration between Java and C++. Features include biometric authentication simulation, hardware-level security checks, and encrypted credential storage.",
-    screenshots: [
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=300&fit=crop&auto=format",
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=300&fit=crop&auto=format"
-    ],
-    techStack: ["Java", "C++", "JNI", "Native Development"],
-    createdAt: "July 2025"
-  },
+  
   {
     id: 4,
     title: "Thisisnavneet",
     description: "This is a profile website of my friend.",
     image: "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?w=400&h=200&fit=crop&auto=format",
-    demoLink: "https://thisnavneet.sharmaapplince.xyz/",
+    demoLink: "https://thisnavneet.in/",
     codeLink: "/error_pages/error.html",
     details: "A personal profile website for showcasing portfolio, skills, and achievements. Features include responsive design, project gallery, contact form, and social media integration. Built with modern web technologies to provide an engaging user experience.",
     screenshots: [
@@ -141,7 +142,7 @@ window.projects = [
     title: "Unmanned Multifunctional Surveying Vehicle (UMSV)",
     description: "College project - Autonomous surveying vehicle with multi-sensor integration.",
     image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=200&fit=crop&auto=format",
-    demoLink: "https://www.mediafire.com/folder/vt0seusw2nvc3/MSN_SIGNREADER",
+    demoLink: "/error_pages/error.html",
     codeLink: "/error_pages/error.html",
     details: "An innovative college project developing an unmanned vehicle capable of autonomous surveying. Integrates GPS navigation, obstacle detection sensors, and real-time data collection. Features include remote monitoring, data logging, and automated route planning. Currently in active development with promising results.",
     screenshots: [
@@ -156,7 +157,7 @@ window.projects = [
     title: "Radar System",
     description: "College project - Arduino-based radar system with real-time visualization.",
     image: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=400&h=200&fit=crop&auto=format",
-    demoLink: "https://www.mediafire.com/folder/0lgi6xznfuav4/MSN_APKKILLER",
+    demoLink: "/error_pages/error.html",
     codeLink: "/error_pages/error.html",
     details: "An engineering college project developing a functional radar system using Arduino and ultrasonic sensors. Features include 180-degree scanning, real-time object detection, distance calculation, and computer visualization. The system displays radar sweeps on a connected display with detected objects plotted in real-time.",
     screenshots: [
@@ -194,9 +195,9 @@ projects.forEach(project => {
     const icons = {
       "Application Website": "🌐",
       "School Management System": "🏫",
-      "Bihar Bihara": "🔐",
+      "Bihar Bhraman": "🌐",
       "Thisisnavneet": "👤",
-      "SBCM SCHOOL": "🛠️",
+      "SBCM SCHOOL": "🌐",
       "Chatting Website": "💬",
       "Moco Player": "🎮",
       "MOCOSN TOOLS": "🔧",
@@ -216,10 +217,15 @@ projects.forEach(project => {
       ${project.techStack.length > 3 ? `<span class="tech-tag">+${project.techStack.length - 3}</span>` : ''}
     </div>
     <div class="project-buttons">
-      <a href="/other_pages/project.html?id=${project.id}" class="view-btn">View Details</a>
-      <a href="${project.demoLink}" target="_blank" class="demo-btn">Live Demo</a>
+       <a href="${project.demoLink}" target="_blank" class="demo-btn">Live Demo</a>
     </div>
   `;
 
   projectList.appendChild(card);
 });
+
+//  add this for code link button in project card
+// <div class="project-buttons">
+//       <a href="/other_pages/project.html?id=${project.id}" class="view-btn">View Details</a>
+//       <a href="${project.demoLink}" target="_blank" class="demo-btn">Live Demo</a>
+//     </div>
