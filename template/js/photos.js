@@ -36,7 +36,7 @@ const images = [
   { src: "./photos/img_2.jpg", alt: "Purnea V - Mart" },
   { src: "./photos/img_3.jpg", alt: "Purnea Polytechic Chowk" },
   { src: "./photos/img_4.jpg", alt: "G P Bhagalpur" },
-  { src: "./photos/img_5.jpg", alt: "Mithla Purnea" },
+  // { src: "./photos/img_5.jpg", alt: "Mithla Purnea" },
   { src: "./photos/img_6.jpg", alt: "Hackathon 2024" },
   { src: "./photos/img_7.jpg", alt: "Mithla Purnea" },
   { src: "./photos/img_8.jpg", alt: "G P Bhagalpur" },
@@ -70,7 +70,7 @@ const images = [
   { src: "./photos/oldimg.jpg", alt: "Punrea" },
   { src: "./photos/frdm1.jpeg", alt: "Gujarat" },
   { src: "./photos/frdm.jpeg", alt: "Gujarat" },
-  { src: "./photos/mukeshpersonal.jpg", alt: "Roommate." }
+  // { src: "./photos/mukeshpersonal.jpg", alt: "Roommate." }
 ];
 
 const imageGrid = document.getElementById("imageGrid");
