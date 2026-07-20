@@ -253,7 +253,6 @@ const blogs = [
   },
 ];
 
-// Target container where blogs will be shown
 const blogContainer = document.getElementById("blogsContainer");
 
 // Render blogs dynamically
@@ -261,15 +260,51 @@ blogs.forEach((blog) => {
   const blogEl = document.createElement("div");
   blogEl.classList.add("blogs-main");
 
+  // Determine if description needs truncation (more than 250 characters)
+  const truncateLimit = 250;
+  const needsShowMore = blog.description.length > truncateLimit;
+  
+  const fullDescription = blog.description;
+  const truncatedDescription = needsShowMore 
+    ? blog.description.substring(0, truncateLimit) + '...' 
+    : blog.description;
+
   blogEl.innerHTML = `
-        <div class="blogs-imgs">
-            <img loading="lazy" class="img-blog" src="${blog.image}" alt="Image">
-        </div>
-        <div class="blog-content">
-            <h2 class="blog-title">${blog.title}</h2>
-            <div class="disc">Posted by ${blog.author} on <a href="#">${blog.date}</a></div>
-            <p>${blog.description}</p>
-        </div>
-    `;
+    <div class="blogs-imgs">
+      <img loading="lazy" class="img-blog" src="${blog.image}" alt="Image">
+    </div>
+    <div class="blog-content">
+      <h2 class="blog-title">${blog.title}</h2>
+      <div class="disc">Posted by ${blog.author} on <a href="#">${blog.date}</a></div>
+      <div class="blog-description-wrapper">
+        <p class="blog-description">
+          <span class="short-desc">${truncatedDescription}</span>
+          <span class="full-desc" style="display: none;">${fullDescription}</span>
+        </p>
+        ${needsShowMore ? `<button class="toggle-description-btn">Show More</button>` : ''}
+      </div>
+    </div>
+  `;
+
   blogContainer.appendChild(blogEl);
+
+  // Add event listener for show more/less
+  const toggleBtn = blogEl.querySelector('.toggle-description-btn');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      const shortDesc = blogEl.querySelector('.short-desc');
+      const fullDesc = blogEl.querySelector('.full-desc');
+      const isShowingMore = shortDesc.style.display === 'none';
+      
+      if (isShowingMore) {
+        shortDesc.style.display = 'inline';
+        fullDesc.style.display = 'none';
+        this.textContent = 'Show More';
+      } else {
+        shortDesc.style.display = 'none';
+        fullDesc.style.display = 'inline';
+        this.textContent = 'Show Less';
+      }
+    });
+  }
 });

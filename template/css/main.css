@@ -97,7 +97,7 @@ ul li a {
   padding-left: 6px;
   color: var(--text-color);
   font-size: 1.4rem;
-   font-family: "Akronim", system-ui;
+   /* font-family: "Akronim", system-ui; */
   font-weight: 400;
   font-style: normal;
   text-decoration: none;
@@ -109,7 +109,7 @@ ul li a:hover {
   padding-left: 6px;
   color: var(--text-color);
   font-size: 1.4rem;
-   font-family: "Akronim", system-ui;
+   /* font-family: "Akronim", system-ui; */
   font-weight: 400;
   font-style: normal;
 }

@@ -16,16 +16,7 @@ body {
   margin-top: 20px;
 }
 
-@keyframes appears1 {
-  0% {
-    opacity: 0;
-    transform: translateX(100px) scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-}
+/* REMOVED: @keyframes appears1 */
 
 .project-card {  
   background: rgba(255, 255, 255, 0.35);
@@ -33,9 +24,9 @@ body {
   -webkit-backdrop-filter: blur(12px);
   padding: 20px;
   border-radius: 16px;
-  animation: appears1 linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
+  /* REMOVED: animation: appears1 linear; */
+  /* REMOVED: animation-timeline: view(); */
+  /* REMOVED: animation-range: entry 0% cover 40%; */
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   text-align: center;
   cursor: pointer;
