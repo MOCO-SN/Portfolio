@@ -11,9 +11,61 @@ body {
 
 .project-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-top: 20px;
+}
+
+.skeleton-card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.skeleton-card .skeleton-line {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+  height: 16px;
+  margin-bottom: 10px;
+}
+
+.skeleton-card .skeleton-line:last-child {
+  width: 60%;
+}
+
+.skeleton-card .skeleton-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  margin: 0 auto 15px auto;
+}
+
+.skeleton-card .skeleton-img {
+  width: 100%;
+  height: 140px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* REMOVED: @keyframes appears1 */
@@ -170,15 +222,33 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (width <= 1024px) {
+  .project-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width <= 768px) {
+  .project-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
   .project-icon {
     font-size: 36px;
     width: 60px;
     height: 60px;
   }
-  
+
   .tech-tag {
     font-size: 10px;
     padding: 3px 8px;
+  }
+}
+
+@media (width <= 480px) {
+  .project-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 }

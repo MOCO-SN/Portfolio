@@ -5,7 +5,7 @@ window.projects = [
     description: "Exploring the bihar with Tourism website.",
     image:
       "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
-    demoLink: "https://biharbhraman.com/",
+    demoLink: "https://biharbhraman.in/",
     codeLink: "/error_pages/error.html",
     details:
       "A sophisticated login system leveraging Java for UI and C++ native methods for core authentication logic. Implements JNI (Java Native Interface) for seamless integration between Java and C++. Features include biometric authentication simulation, hardware-level security checks, and encrypted credential storage.",
@@ -13,8 +13,25 @@ window.projects = [
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=300&fit=crop&auto=format",
       "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=300&fit=crop&auto=format",
     ],
-    techStack: ["Java", "C++", "JNI", "Native Development"],
+    techStack: ["HTML","CSS","JS","CDNs"],
     createdAt: "July 2025",
+  },
+  {
+    id: 11,
+    title: "Notification Website",
+    description: "A website for show notification of the jobs and many notification.",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=200&fit=crop&auto=format",
+    demoLink: "https://edvyra.com/",
+    codeLink: "/error_pages/error.html",
+    details:
+      "A comprehensive web platform designed for teachers to efficiently manage their classes and students. Features include attendance tracking, grade management, assignment distribution, student profiles, class schedules, and communication tools for parent-teacher interaction. Built with modern web technologies for a seamless experience.",
+    screenshots: [
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=300&fit=crop&auto=format",
+    ],
+    techStack: ["Wordpress"],
+    createdAt: "Feb 2026",
   },
   {
     id: 12,
@@ -239,46 +256,64 @@ window.projects = [
 
 const projectList = document.getElementById("projectList");
 
-projects.forEach((project) => {
-  const card = document.createElement("div");
-  card.classList.add("project-card");
-
-  // Create icon/emoji based on project title
-  const getProjectIcon = (title) => {
-    const icons = {
-      "Application Website": "🌐",
-      "School Management System": "🏫",
-      "Bihar Bhraman": "🌐",
-      Thisisnavneet: "👤",
-      "SBCM SCHOOL": "🌐",
-      "Chatting Website": "💬",
-      "Moco Player": "🎮",
-      "MOCOSN TOOLS": "🔧",
-      "Unmanned Multifunctional Surveying Vehicle": "🚗",
-      "Radar System": "📡",
-      "Teacher's Website": "👨‍🏫",
-    };
-    return icons[title] || "📁";
+const getProjectIcon = (title) => {
+  const icons = {
+    "Application Website": "🌐",
+    "School Management System": "🏫",
+    "Bihar Bhraman": "🌐",
+    Thisisnavneet: "👤",
+    "SBCM SCHOOL": "🌐",
+    "Chatting Website": "💬",
+    "Moco Player": "🎮",
+    "MOCOSN TOOLS": "🔧",
+    "Unmanned Multifunctional Surveying Vehicle": "🚗",
+    "Radar System": "📡",
+    "Teacher's Website": "👨‍🏫",
   };
+  return icons[title] || "📁";
+};
 
-  card.innerHTML = `
-    <div class="project-icon">${getProjectIcon(project.title)}</div>
-    <h4>${project.title}</h4>
-    <p>${project.description}</p>
-    <div class="project-tech-stack">
-      ${project.techStack
-        .slice(0, 3)
-        .map((tech) => `<span class="tech-tag">${tech}</span>`)
-        .join("")}
-      ${project.techStack.length > 3 ? `<span class="tech-tag">+${project.techStack.length - 3}</span>` : ""}
-    </div>
-    <div class="project-buttons">
-       <a href="${project.demoLink}" target="_blank" class="demo-btn">Live Demo</a>
-    </div>
+projects.forEach((project) => {
+  const skeleton = document.createElement("div");
+  skeleton.className = "skeleton-card";
+  skeleton.innerHTML = `
+    <div class="skeleton-icon"></div>
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line"></div>
+    <div class="skeleton-img"></div>
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line" style="width:40%"></div>
   `;
-
-  projectList.appendChild(card);
+  projectList.appendChild(skeleton);
 });
+
+setTimeout(() => {
+  projectList.innerHTML = "";
+
+  projects.forEach((project) => {
+    const card = document.createElement("div");
+    card.classList.add("project-card");
+
+    card.innerHTML = `
+      <div class="project-icon">${getProjectIcon(project.title)}</div>
+      <h4>${project.title}</h4>
+      <p>${project.description}</p>
+      <div class="project-tech-stack">
+        ${project.techStack
+          .slice(0, 3)
+          .map((tech) => `<span class="tech-tag">${tech}</span>`)
+          .join("")}
+        ${project.techStack.length > 3 ? `<span class="tech-tag">+${project.techStack.length - 3}</span>` : ""}
+      </div>
+      <div class="project-buttons">
+        <a href="${project.demoLink}" target="_blank" class="demo-btn">Live Demo</a>
+      </div>
+    `;
+
+    projectList.appendChild(card);
+  });
+}, 300);
 
 //  add this for code link button in project card
 // <div class="project-buttons">
