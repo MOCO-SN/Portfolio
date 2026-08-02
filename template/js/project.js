@@ -1,4 +1,21 @@
 window.projects = [
+   {
+    id: 3,
+    title: "Isro Hackathon 2026",
+    description: "Exploring Space.",
+    image:
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
+    demoLink: "https://github.com/MOCO-SN/ISRO-HACKATHON",
+    codeLink: "/error_pages/error.html",
+    details:
+      "A sophisticated login system leveraging Java for UI and C++ native methods for core authentication logic. Implements JNI (Java Native Interface) for seamless integration between Java and C++. Features include biometric authentication simulation, hardware-level security checks, and encrypted credential storage.",
+    screenshots: [
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=300&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&h=300&fit=crop&auto=format",
+    ],
+    techStack: [".NET FRAMEWORK","C#","XML","GUNA UI"],
+    createdAt: "July 2025",
+  },
   {
     id: 3,
     title: "Bihar Bhraman",

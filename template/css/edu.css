@@ -99,13 +99,13 @@ h5{
     gap: 12px;
 
     min-height: 150px;
-    padding: 25px 20px;
+    padding: 13px 10px;
 
     background: rgba(215, 236, 238, 0);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
-    border: 1px solid rgba(255,255,255,0.12);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 20px;
 
     cursor: pointer;
@@ -141,7 +141,7 @@ h5{
 /* Icons */
 .skill-item i{
     font-size:55px;
-    color:#00f5ff;
+    color:#495757;
     transition:.4s;
 }
 
@@ -154,13 +154,13 @@ h5{
 .lang-name{
     font-size:18px;
     font-weight:600;
-    color:#fff;
+    color:#000000;
     letter-spacing:.5px;
     transition:.3s;
 }
 
 .skill-item:hover .lang-name{
-    color:#00f5ff;
+    color:#017478;
 }
 
 /* Custom Icon (C & C++) */
@@ -179,7 +179,7 @@ h5{
 
     color:#fff;
 
-    background:linear-gradient(135deg,#0057ff,#00d4ff);
+    background:linear-gradient(135deg,#0055ff,#00d4ff);
 
     transition:.4s;
 }
@@ -191,7 +191,7 @@ h5{
 
 /* Different Icon Colors */
 
-.fa-html5{
+/* .fa-html5{
     color:#ff6b35;
 }
 
@@ -213,18 +213,18 @@ h5{
 
 .fa-cuttlefish{
     color:#9c27b0;
-}
+} */
 
 /* Hover makes them white */
 
-.skill-item:hover .fa-html5,
+/* .skill-item:hover .fa-html5,
 .skill-item:hover .fa-css3-alt,
 .skill-item:hover .fa-js,
 .skill-item:hover .fa-java,
 .skill-item:hover .fa-android,
 .skill-item:hover .fa-cuttlefish{
     color:#ffffff;
-}
+} */
 
 /* ===========================
       Responsive
