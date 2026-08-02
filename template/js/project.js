@@ -146,7 +146,7 @@ window.projects = [
     description: "Real-time chat application with modern UI and features.",
     image:
       "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=400&h=200&fit=crop&auto=format",
-    demoLink: "https://sachinchat.interiorsita.com/",
+    demoLink: "https://chat.mocosn.in/",
     codeLink: "/error_pages/error.html",
     details:
       "A real-time chatting platform with private messaging, group chats, file sharing, and emoji support. Features include user authentication, message history, online status indicators, and push notifications. Built with modern web technologies for seamless communication.",
