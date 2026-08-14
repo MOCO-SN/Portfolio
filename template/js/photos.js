@@ -71,9 +71,9 @@ const images = [
   { src: "./photos/frdm1.jpeg", alt: "Gujarat" },
   { src: "./photos/frdm.jpeg", alt: "Gujarat" },
   { src: "./photos/mukeshpersonal.jpg", alt: "Roommate." },
-  { src: "./photos/10thfrds.jpg", alt: "Gujarat" },
-  { src: "./photos/safron_katihar.jpeg", alt: "Gujarat" },
-  { src: "./photos/patna_water_park.jpg", alt: "Gujarat" }
+  { src: "./photos/10thfrds.jpg", alt: "Friends" },
+  { src: "./photos/safron_katihar.jpeg", alt: "Katihar Saafron" },
+  { src: "./photos/patna_water_park.jpg", alt: "Patna" }
 
 ];
 
