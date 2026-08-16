@@ -81,7 +81,7 @@ h5{
    Skills Section
 =========================== */
 
-.skills-grid {
+.skills-grid, .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 20px;
@@ -90,7 +90,7 @@ h5{
 }
 
 /* Skill Card */
-.skill-item {
+.skill-item, .tools-item {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -98,14 +98,14 @@ h5{
     justify-content: center;
     gap: 12px;
 
-    min-height: 150px;
+    min-height: 100px;
     padding: 13px 10px;
 
     background: rgba(215, 236, 238, 0);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
-    border: 1px solid rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 20px;
 
     cursor: pointer;
@@ -113,16 +113,8 @@ h5{
     transition: all .4s ease;
 }
 
-/* Top Glow */
-.skill-item::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:4px;
-    background:linear-gradient(90deg,#00f5ff,#00ff99,#00f5ff);
-    transition:.5s;
+.tools{
+    margin-top: 40px;
 }
 
 .skill-item:hover::before{
@@ -130,7 +122,7 @@ h5{
 }
 
 /* Hover */
-.skill-item:hover{
+.skill-item:hover, .tools-item:hover{
     transform:translateY(-8px) scale(1.03);
     border-color:#00f5ff;
     box-shadow:
@@ -138,93 +130,21 @@ h5{
         0 0 25px rgba(0,245,255,.15);
 }
 
-/* Icons */
-.skill-item i{
-    font-size:55px;
-    color:#495757;
-    transition:.4s;
+.tools-item:hover:hover::before{
+    left:0;
 }
 
-.skill-item:hover i{
-    transform:scale(1.2) rotate(8deg);
-    color:#ffffff;
+/* Language Icons (SVG) */
+.lang-icon, .tools-icon{
+    width: 65px;
+    height: 65px;
+    transition: transform .4s ease, filter .4s ease;
 }
 
-/* Language Name */
-.lang-name{
-    font-size:18px;
-    font-weight:600;
-    color:#000000;
-    letter-spacing:.5px;
-    transition:.3s;
+.skill-item:hover .lang-icon, .tools-item:hover .tools-icon{
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
 }
-
-.skill-item:hover .lang-name{
-    color:#017478;
-}
-
-/* Custom Icon (C & C++) */
-.custom-icon{
-    width:65px;
-    height:65px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
-    font-size:24px;
-    font-weight:bold;
-
-    color:#fff;
-
-    background:linear-gradient(135deg,#0055ff,#00d4ff);
-
-    transition:.4s;
-}
-
-.skill-item:hover .custom-icon{
-    transform:rotate(10deg) scale(1.15);
-    box-shadow:0 0 20px rgba(0,212,255,.6);
-}
-
-/* Different Icon Colors */
-
-/* .fa-html5{
-    color:#ff6b35;
-}
-
-.fa-css3-alt{
-    color:#2196f3;
-}
-
-.fa-js{
-    color:#ffd600;
-}
-
-.fa-java{
-    color:#ff5722;
-}
-
-.fa-android{
-    color:#3ddc84;
-}
-
-.fa-cuttlefish{
-    color:#9c27b0;
-} */
-
-/* Hover makes them white */
-
-/* .skill-item:hover .fa-html5,
-.skill-item:hover .fa-css3-alt,
-.skill-item:hover .fa-js,
-.skill-item:hover .fa-java,
-.skill-item:hover .fa-android,
-.skill-item:hover .fa-cuttlefish{
-    color:#ffffff;
-} */
 
 /* ===========================
       Responsive
@@ -233,42 +153,38 @@ h5{
 /* Large Tablets */
 @media (max-width:992px){
 
-    .skills-grid{
+    .skills-grid, .tools-grid{
         grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
         gap:18px;
     }
 
-    .skill-item{
+    .skill-item, .tools-item{
         min-height:140px;
         padding:20px;
     }
 
-    .skill-item i{
-        font-size:50px;
+    .lang-icon, .tools-icon{
+        width: 55px;
+        height: 55px;
     }
 }
 
 /* Tablets */
 @media (max-width:768px){
 
-    .skills-grid{
+    .skills-grid, .tools-grid{
         grid-template-columns:repeat(2,1fr);
         gap:15px;
     }
 
-    .skill-item{
+    .skill-item, .tools-item{
         min-height:135px;
         border-radius:18px;
     }
 
-    .skill-item i{
-        font-size:45px;
-    }
-
-    .custom-icon{
-        width:60px;
-        height:60px;
-        font-size:22px;
+    .lang-icon, .tools-icon{
+        width: 50px;
+        height: 50px;
     }
 
     .lang-name{
@@ -279,25 +195,20 @@ h5{
 /* Mobile */
 @media (max-width:480px){
 
-    .skills-grid{
+    .skills-grid, .tools-grid{
         grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
-    .skill-item{
+    .skill-item, .tools-item{
         min-height:120px;
         padding:18px 12px;
         border-radius:15px;
     }
 
-    .skill-item i{
-        font-size:38px;
-    }
-
-    .custom-icon{
-        width:50px;
-        height:50px;
-        font-size:18px;
+    .lang-icon, .tools-icon{
+        width: 42px;
+        height: 42px;
     }
 
     .lang-name{
@@ -308,7 +219,7 @@ h5{
 /* Very Small Phones */
 @media (max-width:340px){
 
-    .skills-grid{
+    .skills-grid, .tools-grid{
         grid-template-columns:1fr;
     }
 }
