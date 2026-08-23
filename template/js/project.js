@@ -129,8 +129,8 @@ window.projects = [
       "Advanced mod menu system with native library injection capabilities.",
     image:
       "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&h=200&fit=crop&auto=format",
-    demoLink: "https://www.mediafire.com/folder/ijom0vpjccbwy/Moco+Player",
-    codeLink: "https://mocoplayer.interiorsita.com/",
+    demoLink: "https://mocoplayer.mocosn.in/",
+    codeLink: "https://mocoplayer.mocosn.in/",
     techStack: ["Java", "C++", "Dynamic Linking", "Hook Framework"],
   },
   {
