@@ -333,6 +333,7 @@ section {
 .edu-main,
 .image-certificate,
 .links-main,
+.tools,
 .blogs {
   padding: 10px 30px 10px;
 }
@@ -394,4 +395,19 @@ section {
     margin-left: 0px;
     top: 0;
   }
+}
+
+/* ============================================
+   Global Scroll-Reveal Animation
+   Used by: project cards, blog cards, photos
+============================================ */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(38px) scale(0.97);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.scroll-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }

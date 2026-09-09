@@ -81,38 +81,6 @@ h5{
    Skills Section
 =========================== */
 
-.skills-grid, .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 20px;
-    width: 100%;
-    margin-top: 30px;
-}
-
-/* Skill Card */
-.skill-item, .tools-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-
-    min-height: 100px;
-    padding: 13px 10px;
-
-    background: rgba(215, 236, 238, 0);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    border: 1px solid rgba(0, 0, 0, 0);
-    border-radius: 20px;
-
-    cursor: pointer;
-    overflow: hidden;
-    transition: all .4s ease;
-}
-
 .tools{
     margin-top: 40px;
 }
@@ -121,132 +89,196 @@ h5{
     left:0;
 }
 
-/* Hover */
-.skill-item:hover, .tools-item:hover{
-    transform:translateY(-8px) scale(1.03);
-    border-color:#00f5ff;
-    box-shadow:
-        0 12px 35px rgba(0,245,255,.25),
-        0 0 25px rgba(0,245,255,.15);
+.tools-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 18px;
+    width: 100%;
+    margin-top: 28px;
 }
 
-.tools-item:hover:hover::before{
-    left:0;
+.tool-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 22px 14px 22px;
+    background: #ebeeee89;
+    border-radius: 16px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    gap: 0;
+    /* scroll animation: start hidden + shifted down */
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.3s ease;
 }
 
-/* Language Icons */
-.lang-icon, .tools-icon{
-    width: 65px;
-    height: 65px;
+/* triggered by IntersectionObserver */
+.tool-card.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.tool-card.in-view:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+.tool-card-icon {
+    width: 52px;
+    height: 52px;
     object-fit: contain;
     object-position: center;
-    transition: transform .4s ease, filter .4s ease;
+    margin-bottom: 12px;
+    transition: transform 0.35s ease;
 }
 
-.skill-item:hover .lang-icon, .tools-item:hover .tools-icon{
-    transform: scale(1.15) rotate(5deg);
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+.tool-card:hover .tool-card-icon {
+    transform: scale(1.12) rotate(4deg);
+}
+
+.tool-card-name {
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.tool-card-category {
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: #888888;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+/* Progress Bar */
+.tool-card-progress-wrap {
+    width: 100%;
+    background: #d9d6d6;
+    border-radius: 999px;
+    height: 6px;
+    margin-top: 16px;
+    position: relative;
+    overflow: visible;
+}
+
+.tool-card-progress-bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #23eef5, #0ccbe8);
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tool-card-pct {
+    position: absolute;
+    right: 0;
+    top: -18px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #0cd2e8;
+    letter-spacing: 0.3px;
+}
+
+/* Responsive – tool cards */
+@media (max-width: 768px) {
+    .tools-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+    .tool-card-icon {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tools-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .tool-card {
+        padding: 18px 10px 14px;
+    }
+    .tool-card-icon {
+        width: 38px;
+        height: 38px;
+    }
 }
 
 /* ===========================
-      Responsive
+   Skeleton Loading Cards
 =========================== */
 
-/* Large Tablets */
-@media (max-width:992px){
-
-    .skills-grid, .tools-grid{
-        grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-        gap:18px;
-    }
-
-    .skill-item, .tools-item{
-        min-height:140px;
-        padding:20px;
-    }
-
-    .lang-icon, .tools-icon{
-        width: 55px;
-        height: 55px;
-    }
+@keyframes shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position:  400px 0; }
 }
 
-/* Tablets */
-@media (max-width:768px){
-
-    .skills-grid, .tools-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:15px;
-    }
-
-    .skill-item, .tools-item{
-        min-height:135px;
-        border-radius:18px;
-    }
-
-    .lang-icon, .tools-icon{
-        width: 50px;
-        height: 50px;
-    }
-
-    .lang-name{
-        font-size:16px;
-    }
+.skel-grid {
+    pointer-events: none;
 }
 
-/* Mobile */
-@media (max-width:480px){
-
-    .skills-grid, .tools-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .skill-item, .tools-item{
-        min-height:120px;
-        padding:18px 12px;
-        border-radius:15px;
-    }
-
-    .lang-icon, .tools-icon{
-        width: 42px;
-        height: 42px;
-    }
-
-    .lang-name{
-        font-size:15px;
-    }
+.tool-card-skel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 22px 14px 22px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
 }
 
-/* Very Small Phones */
-@media (max-width:340px){
-
-    .skills-grid, .tools-grid{
-        grid-template-columns:1fr;
-    }
+.skel {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ececec 25%, #d8d8d8 50%, #ececec 75%);
+    background-size: 800px 100%;
+    animation: shimmer 1.5s infinite linear;
 }
 
-.skill-item{
-    animation: fadeUp .7s ease forwards;
-    opacity:0;
+.skel-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    margin-bottom: 14px;
+    flex-shrink: 0;
 }
 
-.skill-item:nth-child(1){animation-delay:.1s;}
-.skill-item:nth-child(2){animation-delay:.2s;}
-.skill-item:nth-child(3){animation-delay:.3s;}
-.skill-item:nth-child(4){animation-delay:.4s;}
-.skill-item:nth-child(5){animation-delay:.5s;}
-.skill-item:nth-child(6){animation-delay:.6s;}
-.skill-item:nth-child(7){animation-delay:.7s;}
-.skill-item:nth-child(8){animation-delay:.8s;}
+.skel-name {
+    width: 70%;
+    height: 11px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.skel-cat {
+    width: 85%;
+    height: 9px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.skel-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    margin-top: auto;
+}
+
+/* Fade-in for real cards after skeleton */
+.cards-fade-in {
+    animation: cardsFadeIn 0.5s ease forwards;
+}
+
+@keyframes cardsFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
 }

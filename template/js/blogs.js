@@ -258,7 +258,7 @@ const blogContainer = document.getElementById("blogsContainer");
 // Render blogs dynamically
 blogs.forEach((blog) => {
   const blogEl = document.createElement("div");
-  blogEl.classList.add("blogs-main");
+  blogEl.classList.add("blogs-main", "scroll-reveal");
 
   // Determine if description needs truncation (more than 250 characters)
   const truncateLimit = 250;
@@ -308,3 +308,8 @@ blogs.forEach((blog) => {
     });
   }
 });
+
+// staggered scroll-in animation for blogs
+if (typeof window.initScrollAnim === 'function') {
+  window.initScrollAnim(blogContainer, '.scroll-reveal', 100);
+}

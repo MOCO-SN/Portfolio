@@ -81,7 +81,7 @@ const imageGrid = document.getElementById("imageGrid");
 
 images.forEach(imgData => {
   const wrapper = document.createElement("div");
-  wrapper.className = "image-item";
+  wrapper.className = "image-item scroll-reveal";
 
   const skeleton = document.createElement("div");
   skeleton.className = "skeleton";
@@ -110,6 +110,12 @@ images.forEach(imgData => {
   wrapper.appendChild(info);
   imageGrid.appendChild(wrapper);
 });
+
+// staggered scroll-in for photos
+if (typeof window.initScrollAnim === 'function') {
+  window.initScrollAnim(imageGrid, '.scroll-reveal', 60);
+}
+
 
 // Modal functions
 function openModal(src) {

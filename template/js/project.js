@@ -205,7 +205,7 @@ setTimeout(() => {
 
   projects.forEach((project) => {
     const card = document.createElement("div");
-    card.classList.add("project-card");
+    card.classList.add("project-card", "scroll-reveal");
 
     card.innerHTML = `
       <h4>${project.title}</h4>
@@ -224,4 +224,9 @@ setTimeout(() => {
 
     projectList.appendChild(card);
   });
+
+  // staggered scroll-in animation
+  if (typeof window.initScrollAnim === 'function') {
+    window.initScrollAnim(projectList, '.scroll-reveal', 80);
+  }
 }, 300);

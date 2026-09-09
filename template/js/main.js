@@ -16,8 +16,6 @@ document.onkeydown = (e) => {
     }
 };
 
-
-
 const scrollLine = document.querySelector('.scroll-line');
 
 function updateScrollProgress() {
@@ -42,3 +40,32 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('resize', updateScrollProgress);
+
+// ── Global staggered scroll-reveal ──────────────────────────────────
+// Called by: photos.js, project.js, blogs.js, and skills section in index.html
+// container  – parent element to query inside
+// selector   – CSS selector for items to animate (default '.scroll-reveal')
+// stagger    – ms delay between each item (default 90)
+window.initScrollAnim = function (container, selector, stagger) {
+    selector = selector || '.scroll-reveal';
+    stagger  = stagger  || 90;
+    var items = container.querySelectorAll(selector);
+    if (!items.length) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                var el = entry.target;
+                setTimeout(function () {
+                    el.classList.add('in-view');
+                }, parseFloat(el.dataset.animDelay) || 0);
+                obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+    items.forEach(function (el, i) {
+        el.dataset.animDelay = i * stagger;
+        obs.observe(el);
+    });
+};
