@@ -6,7 +6,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(145deg, #f9fafc 0%, #eef2f9 100%);
+            background: url(./back.png);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -43,11 +43,11 @@
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(0px);
+            background: rgba(255, 255, 255, 0.482);
+            backdrop-filter: blur(10px);
             width: 100%;
             max-width: 460px;
-            border-radius: 2rem;
+            border-radius: 1rem;
             box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.05);
             padding: 2rem 1.8rem 2.2rem;
             transition: transform 0.2s ease, opacity 0.25s ease;
@@ -108,7 +108,8 @@
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            background: #F9FAFB;
+            background: #f9fafb96;
+            backdrop-filter:blur(10px);
             border-radius: 1.2rem;
             border: 1.5px solid #E5E7EB;
             transition: all 0.2s ease;
@@ -206,7 +207,7 @@
         /* Recover link */
         .recover {
             text-align: right;
-            margin: 0.5rem 0 1.5rem 0;
+            margin: 0.2rem 0 0.5rem 0;
         }
 
         .recover a {
