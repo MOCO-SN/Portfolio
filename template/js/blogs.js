@@ -185,7 +185,7 @@ const blogs = [
     title: "Hackathon 2024",
     author: "Sachin",
     date: "Oct 21, 2024",
-    image: "photos/Hackathon.jpg",
+    image: "photos/img_6.jpg",
     description: `Recently, our team had the opportunity to participate in the GP Purena Hackathon,
         a thrilling event filled with creativity, coding, and collaboration. 
         I teamed up with my three friends to take on the challenge.
@@ -312,4 +312,4 @@ blogs.forEach((blog) => {
 // staggered scroll-in animation for blogs
 if (typeof window.initScrollAnim === 'function') {
   window.initScrollAnim(blogContainer, '.scroll-reveal', 100);
-}
+}
