@@ -1,7 +1,10 @@
-const CACHE_NAME = 'profile-v2';
+const CACHE_NAME = 'profile-v4';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/sitemap.xml',
+  '/robots.txt',
+  '/manifest.json',
   '/css/main.css',
   '/css/edu.css',
   '/css/projects.css',
@@ -36,6 +39,17 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // Only handle GET requests
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
+  // Do not intercept external requests (Google AdSense, Analytics, CDNs, etc.)
+  const requestUrl = new URL(event.request.url);
+  if (requestUrl.origin !== location.origin) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {

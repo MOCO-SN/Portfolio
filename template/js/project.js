@@ -2,12 +2,22 @@ window.projects = [
   {
     id: 1,
     title: "Vibe's music",
-    description: "Code wit vibes.",
+    description: "Code with vibes.",
     image:
       "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
     demoLink: "https://music.mocosn.in/",
     codeLink: "/error_pages/error.html",
     techStack: ["React","FIREBASE"],
+  },
+  {
+    id: 13,
+    title: "Phone",
+    description: "Code with vibes.",
+    image:
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
+    demoLink: "https://phone.mocosn.in/",
+    codeLink: "/error_pages/error.html",
+    techStack: ["Kotlin","Java","FIREBASE",],
   },
   {
     id: 2,

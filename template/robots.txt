@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /track-visitor
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://mocosn.in/sitemap.xml

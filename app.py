@@ -1,5 +1,5 @@
 import logging
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_mail import Mail, Message
 
 # Suppress 304 Not Modified logs
@@ -131,6 +131,18 @@ def send_visitor_email(ips, device_info=None, ip_info=None, gps=None, webrtc_ips
 def index():
     ips = get_client_ip()
     return render_template("index.html")
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('template', 'sitemap.xml', mimetype='application/xml')
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('template', 'robots.txt', mimetype='text/plain')
+
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory('template', 'manifest.json', mimetype='application/manifest+json')
 
 @app.route('/track-visitor', methods=['POST'])
 def track_visitor():

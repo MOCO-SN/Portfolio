@@ -29,6 +29,7 @@
   }
 
   /* Styling for the text */
+.overlay h1,
 .overlay h2 {
     font-size: 50px;
     margin: 10px;
@@ -125,7 +126,8 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .overlay h2 {
+    .overlay h1,
+.overlay h2 {
         font-size: 32px;
         text-shadow: 
             1px 1px 3px rgba(0, 0, 0, 0.7),
