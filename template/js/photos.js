@@ -73,7 +73,14 @@ const images = [
   { src: "./photos/mukeshpersonal.jpg", alt: "Roommate." },
   { src: "./photos/10thfrds.jpg", alt: "Friends" },
   { src: "./photos/safron_katihar.jpeg", alt: "Katihar Saafron" },
-  { src: "./photos/patna_water_park.jpg", alt: "Patna" }
+  { src: "./photos/patna_water_park.jpg", alt: "Patna" },
+  { src: "./photos/maniharime.jpg", alt: "Manihari Ghat" },
+  { src: "./photos/maniharighat.jpg", alt: "Manihari Ghat Sunset" },
+  { src: "./photos/maniharighatme1.jpeg", alt: "Manihari Ghat" },
+  { src: "./photos/maniharighatme2.jpeg", alt: "Manihari Ghat" },
+  { src: "./photos/gogabil_lake2.jpeg", alt: "Gogabil Lake (Goga Jhil)" },
+  { src: "./photos/lake.jpeg", alt: "Gogabil Lake (Goga Jhil)" }
+
 
 ];
 

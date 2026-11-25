@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moco & Us — Our Protected Gallery</title>
+    <title>Moco · still us</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Quicksand', sans-serif;
             background: linear-gradient(145deg, #fff5f8 0%, #ffe6f0 100%);
             color: #4a2c2f;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
         }
+
+        /* loading + auth screens (kept intact) */
         .loading-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -40,6 +48,11 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.9s ease;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
         }
         .main-content.visible {
             opacity: 1;
@@ -78,24 +91,184 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .container { max-width: 1300px; margin: 0 auto; padding: 2rem; }
-        .hero { text-align: center; margin-bottom: 3rem; }
-        .hero h1 { font-size: 3.5rem; background: linear-gradient(135deg, #d14b6e, #b83b5e); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .memories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .memory-card { background: rgba(255,255,255,0.92); border-radius: 2rem; overflow: hidden; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .memory-card:hover { transform: translateY(-8px); }
-        .memory-img { width: 100%; height: 240px; object-fit: cover; }
-        .memory-content { padding: 1.4rem; }
-        .memory-title { font-size: 1.5rem; font-weight: 700; color: #be3b62; }
-        .memory-date { background: #ffeef4; display: inline-block; padding: 0.2rem 0.9rem; border-radius: 30px; font-size: 0.75rem; margin: 0.6rem 0; }
-        .love-letter { background: #fff0f5; border-radius: 3rem; padding: 2rem; text-align: center; margin-top: 3rem; }
-        footer { text-align: center; margin-top: 3rem; color: #aa7e8a; }
-        .lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: 0.25s; z-index: 2000; }
-        .lightbox.active { visibility: visible; opacity: 1; }
-        .lightbox-img { max-width: 85vw; max-height: 80vh; border-radius: 1.5rem; border: 3px solid white; }
-        .close-lightbox { position: absolute; top: 25px; right: 35px; color: white; font-size: 2.5rem; cursor: pointer; background: rgba(0,0,0,0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .floating-heart { position: fixed; pointer-events: none; z-index: 999; animation: floatHeart 4s ease-out forwards; }
-        @keyframes floatHeart { 0% { transform: translateY(0) rotate(0deg); opacity: 0.7; } 100% { transform: translateY(-120px) rotate(15deg); opacity: 0; } }
+
+        /* container — much quieter, almost only the letter */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* subtle hero, no grid, no cards */
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #d14b6e, #b83b5e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #b3697e;
+            margin-top: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* the only real content — an honest note */
+        .sorry-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 3rem;
+            padding: 3rem 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 25px 40px -15px rgba(190, 59, 98, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: transform 0.3s;
+        }
+        .sorry-card:hover {
+            transform: scale(1.01);
+        }
+        .sorry-card h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #b83b5e;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .sorry-card h2 i {
+            font-size: 2rem;
+            color: #e85d8a;
+        }
+        .sorry-text {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #5a2e3a;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            quotes: "“" "”" "‘" "’";
+        }
+        .sorry-text::before {
+            content: "“";
+            font-size: 2.5rem;
+            color: #e85d8a;
+            opacity: 0.5;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .sorry-text::after {
+            content: "”";
+            font-size: 2.5rem;
+            color: #e85d8a;
+            opacity: 0.5;
+            margin-left: 5px;
+            vertical-align: bottom;
+        }
+        .sorry-meta {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #be3b62;
+            text-align: right;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #fbc4d2;
+            letter-spacing: 0.5px;
+        }
+        .sorry-meta i {
+            margin-right: 8px;
+            color: #e85d8a;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #aa7e8a;
+            font-size: 0.95rem;
+            padding-bottom: 1rem;
+        }
+        footer i {
+            color: #e85d8a;
+            margin: 0 5px;
+        }
+
+        /* ========== FALLING HEARTS ========== */
+        .falling-heart {
+            position: fixed;
+            top: -10vh;
+            pointer-events: none;
+            z-index: 1;
+            animation: fallHeart linear forwards;
+            color: #f9a8d4;
+            opacity: 0.7;
+        }
+
+        @keyframes fallHeart {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0.8;
+            }
+            70% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ========== ICE CRYSTALS ========== */
+        .ice-crystal {
+            position: fixed;
+            top: -10vh;
+            pointer-events: none;
+            z-index: 1;
+            animation: fallCrystal linear forwards;
+            color: rgba(173, 216, 230, 0.7);
+            text-shadow: 0 0 8px rgba(200, 230, 255, 0.8);
+        }
+
+        @keyframes fallCrystal {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0.9;
+            }
+            60% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* subtle sparkle for crystals */
+        .ice-crystal::before {
+            content: "✦";
+            position: absolute;
+            font-size: 0.4em;
+            top: -0.3em;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.6;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -110,31 +283,35 @@
 
 <div class="main-content" id="mainContent">
     <div class="container">
+        <!-- tiny hero, just the names -->
         <div class="hero">
             <h1><i class="fas fa-heart"></i> Moco & Us <i class="fas fa-heart"></i></h1>
-            <div class="sub">✨ Every moment, a treasure ✨</div>
-            <p>From laughter to whispers, from sunset walks to midnight talks — every second with you, Moco, is a beautiful page in our story.</p>
+            <div class="sub">✨ still here, still us ✨</div>
         </div>
-        <div id="memoriesGrid" class="memories-grid"></div>
-        <div class="love-letter">
-            <h2><i class="fa-regular fa-message"></i> To my Moco 💌</h2>
-            <p>“Every moment we spent together lives inside my heart like a beautiful photograph. The way you smile, the way you hold my hand — those memories are my greatest treasure. Thank you for being my home. I love you more than all the stars in the sky.”</p>
-            <div class="signature">— Yours forever, with love 🥀</div>
+
+        <!-- the single note — no gallery, no cards, just honesty -->
+        <div class="sorry-card">
+            <h2><i class="fa-regular fa-face-sad-tear"></i> Sorry my Moco <i class="fa-regular fa-heart"></i></h2>
+            <div class="sorry-text">
+                Your boy is failed at "Everything" <br> i can't make you feel.. "Special" <br> i can't may you "Happy" <br> A Sorry for "Everything"
+            </div>
+            <div class="sorry-meta">
+                <i class="fa-regular fa-heart"></i> — but Sorry.... <i class="fa-regular fa-heart"></i>
+            </div>
         </div>
-        <footer><i class="fas fa-infinity"></i> Our journey continues — made with endless love for Moco</footer>
+
+        <!-- nothing else — cards, grid, love-letter hidden/removed -->
+        <footer>
+            <i class="fas fa-infinity"></i> Moco &nbsp;|&nbsp; Even when you fail, you're my favourite Moco <i class="fas fa-infinity"></i>
+        </footer>
     </div>
 </div>
 
-<div id="lightbox" class="lightbox">
-    <span class="close-lightbox"><i class="fas fa-times"></i></span>
-    <img class="lightbox-img" id="lightboxImg" src="" alt="memory enlarged">
-    <div class="lightbox-caption" id="lightboxCaption"></div>
-</div>
-
+<!-- session warning (still functional) -->
 <div id="sessionWarning" class="session-warning">⚠️ Session expires in <span id="sessionTimer">1:00</span></div>
 
 <script type="module">
-    // ----- Firebase imports for signOut (clean logout) -----
+    // ----- Firebase imports (unchanged) -----
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
     import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
@@ -151,7 +328,7 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // ================= SESSION MANAGEMENT =================
+    // ================= SESSION MANAGEMENT (unchanged) =================
     const SESSION_DURATION = 15 * 60 * 1000; // 15 minutes
 
     function isSessionValid(uidFromUrl) {
@@ -239,7 +416,7 @@
         return true;
     }
 
-    // ========== SHA256 helper ==========
+    // ========== SHA256 helper (unchanged) ==========
     async function sha256(message) {
         const encoder = new TextEncoder();
         const data = encoder.encode(message);
@@ -248,142 +425,40 @@
         return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // ========== API FETCHING ==========
-    // Replace these with actual values from your authentication system
-    // const hwid = "test-hwid";          // Should come from device or user session
-    // const token = "test-token";        // Should come from your login process
-    // const apiSecret = "YourSuperSecretKey2025!"; // Must match the server secret
-
+    // ========== API FETCHING — kept but never used to render cards ==========
     async function fetchMemoriesFromAPI() {
-    const hwid = "test-hwid";          // Replace with actual HWID
-    const token = "test-token";        // Replace with actual token
-    const apiSecret = "YourSuperSecretKey2025!";
-    
-    // Compute signature
-    const raw = hwid + token + apiSecret;
-    const signature = await sha256(raw);
-    
-    try {
-        const response = await fetch('https://mocoplayer.interiorsita.com/mocosn/get-mocosn-love.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ hwid, token, signature }),
-            mode: 'cors',      // explicit
-            credentials: 'omit' // change if needed
-        });
+        const hwid = "test-hwid";
+        const token = "test-token";
+        const apiSecret = "YourSuperSecretKey2025!";
         
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
+        const raw = hwid + token + apiSecret;
+        const signature = await sha256(raw);
         
-        const result = await response.json();
-        if (result.error) {
-            throw new Error(result.error);
-        }
-        return result.data || [];
-    } catch (error) {
-        console.error('API fetch error:', error);
-        // Fallback to hardcoded data (or show empty)
-        return getFallbackMemories();
-    }
-}
-
-// Fallback data in case API fails
-function getFallbackMemories() {
-    return [
-        { title: "First Sunset date 🌅", date: "March 2024", description: "Golden skies, your hand in mine.", imageUrl: "https://picsum.photos/id/104/400/280" },
-        { title: "Coffee & Laughs ☕", date: "April 2024", description: "Rainy afternoon, endless laughter.", imageUrl: "https://picsum.photos/id/20/400/280" },
-        // ... add more
-    ];
-}
-    // ========== GALLERY RENDERING ==========
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
-    }
-
-    function renderMemories(memoriesData) {
-        const grid = document.getElementById('memoriesGrid');
-        if (!grid) return;
-        
-        if (!memoriesData || memoriesData.length === 0) {
-            grid.innerHTML = '<div class="unauthorized">No memories found. Please check back later.</div>';
-            return;
-        }
-        
-        let html = '';
-        memoriesData.forEach(mem => {
-            // Map API fields to display fields
-            const title = mem.title || "Untitled";
-            const date = mem.date || "";
-            const description = mem.description || mem.message || "";
-            const imageUrl = mem.imageUrl || "https://via.placeholder.com/400x280?text=Image+Not+Found";
-            const subtitle = mem.subtitle || "";
-            
-            html += `
-                <div class="memory-card" data-img="${imageUrl}" data-title="${escapeHtml(title)}" data-desc="${escapeHtml(description)}">
-                    <img class="memory-img" src="${imageUrl}" alt="${escapeHtml(title)}" loading="lazy">
-                    <div class="memory-content">
-                        <div class="memory-title"><i class="fa-regular fa-heart"></i> ${escapeHtml(title)}</div>
-                        <div class="memory-date"><i class="fa-regular fa-calendar"></i> ${escapeHtml(date)}</div>
-                        ${subtitle ? `<div class="memory-subtitle">${escapeHtml(subtitle)}</div>` : ''}
-                        <p class="memory-desc">${escapeHtml(description)}</p>
-                    </div>
-                </div>
-            `;
-        });
-        grid.innerHTML = html;
-        
-        document.querySelectorAll('.memory-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const imgUrl = card.getAttribute('data-img');
-                const title = card.getAttribute('data-title');
-                const desc = card.getAttribute('data-desc');
-                openLightbox(imgUrl, `${title} — ${desc}`);
+        try {
+            const response = await fetch('https://mocoplayer.interiorsita.com/mocosn/get-mocosn-love.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ hwid, token, signature }),
+                mode: 'cors',
+                credentials: 'omit'
             });
-        });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            if (result.error) {
+                throw new Error(result.error);
+            }
+            return result.data || [];
+        } catch (error) {
+            console.error('API fetch error:', error);
+            return [];
+        }
     }
 
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    function openLightbox(src, caption) {
-        lightboxImg.src = src;
-        lightboxCaption.innerText = caption;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    document.querySelector('.close-lightbox')?.addEventListener('click', closeLightbox);
-    lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-
-    // Floating hearts
-    function createFloatingHeart() {
-        const heart = document.createElement('div');
-        heart.innerHTML = '<i class="fas fa-heart"></i>';
-        heart.classList.add('floating-heart');
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
-        heart.style.color = '#f9a8d4';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-    }
-    function startFloatingHearts() {
-        setInterval(() => {
-            if (Math.random() > 0.7) createFloatingHeart();
-        }, 3000);
-    }
-
-    // ========== VERIFICATION + SESSION CHECK + FETCH DATA ==========
+    // ========== VERIFICATION + SESSION CHECK + (no card rendering) ==========
     const urlParams = new URLSearchParams(window.location.search);
     const uid = urlParams.get('uid');
     const hash = urlParams.get('hash');
@@ -423,26 +498,95 @@ function getFallbackMemories() {
             return;
         }
         
-        // All good: show gallery and start monitoring
+        // All good: show the (now minimal) content and start monitoring
         loadingScreen.style.opacity = "0";
         setTimeout(() => {
             loadingScreen.style.display = "none";
             mainContent.classList.add("visible");
-            startFloatingHearts();
             startSessionMonitoring(uid);
+            startFallingHearts();
+            startIceCrystals();
         }, 500);
         
-        // Fetch and render memories from API
-        try {
-            const memories = await fetchMemoriesFromAPI();
-            renderMemories(memories);
-        } catch (error) {
-            console.error('Failed to fetch memories:', error);
-            const grid = document.getElementById('memoriesGrid');
-            if (grid) {
-                grid.innerHTML = `<div class="unauthorized">Unable to load memories. Please try again later. Error: ${error.message}</div>`;
-            }
+        // We deliberately do NOT render any memory cards. 
+        // No fetchMemoriesFromAPI() call, no grid, no lightbox.
+        // The gallery is replaced with a single honest apology note.
+        // Nothing else to render.
+    }
+
+    // ========== FALLING HEARTS ==========
+    function createFallingHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'falling-heart';
+        heart.innerHTML = '<i class="fas fa-heart"></i>';
+        
+        const size = Math.random() * 1.2 + 0.6; // 0.6rem to 1.8rem
+        heart.style.fontSize = size + 'rem';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 4 + 5) + 's'; // 5-9 seconds
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        
+        // Vary the pink color slightly
+        const pinkHues = ['#f9a8d4', '#f472b6', '#ec4899', '#fbcfe8', '#fda4af'];
+        heart.style.color = pinkHues[Math.floor(Math.random() * pinkHues.length)];
+        
+        document.body.appendChild(heart);
+        
+        // Remove after animation completes
+        setTimeout(() => {
+            heart.remove();
+        }, parseFloat(heart.style.animationDuration) * 1000 + parseFloat(heart.style.animationDelay) * 1000 + 500);
+    }
+
+    function startFallingHearts() {
+        // Initial batch
+        for (let i = 0; i < 8; i++) {
+            setTimeout(() => createFallingHeart(), i * 300);
         }
+        // Continuous hearts
+        setInterval(createFallingHeart, 1200);
+    }
+
+    // ========== ICE CRYSTALS ==========
+    function createIceCrystal() {
+        const crystal = document.createElement('div');
+        crystal.className = 'ice-crystal';
+        
+        // Use Font Awesome's snowflake icon or sparkle
+        const icons = ['❄', '❅', '❆', '✧', '✦'];
+        crystal.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        
+        const size = Math.random() * 1.4 + 0.5; // 0.5rem to 1.9rem
+        crystal.style.fontSize = size + 'rem';
+        crystal.style.left = Math.random() * 100 + 'vw';
+        crystal.style.animationDuration = (Math.random() * 5 + 6) + 's'; // 6-11 seconds
+        crystal.style.animationDelay = Math.random() * 8 + 's';
+        
+        // Vary the ice blue colors
+        const iceColors = [
+            'rgba(173, 216, 230, 0.7)',
+            'rgba(200, 230, 255, 0.8)',
+            'rgba(176, 224, 230, 0.6)',
+            'rgba(220, 240, 255, 0.75)',
+            'rgba(135, 206, 250, 0.55)'
+        ];
+        crystal.style.color = iceColors[Math.floor(Math.random() * iceColors.length)];
+        
+        document.body.appendChild(crystal);
+        
+        // Remove after animation completes
+        setTimeout(() => {
+            crystal.remove();
+        }, parseFloat(crystal.style.animationDuration) * 1000 + parseFloat(crystal.style.animationDelay) * 1000 + 500);
+    }
+
+    function startIceCrystals() {
+        // Initial batch
+        for (let i = 0; i < 6; i++) {
+            setTimeout(() => createIceCrystal(), i * 500);
+        }
+        // Continuous crystals
+        setInterval(createIceCrystal, 2000);
     }
 
     // Start everything

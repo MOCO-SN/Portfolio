@@ -1,5 +1,25 @@
 const blogs = [
   {
+    title: "Bihar, Katihar – Gogabil Lake (Goga Jhil)",
+    author: "Sachin",
+    date: "Nov 25, 2026",
+    image: "photos/gogabil_lake.jpg",
+    description: `During my time in Katihar, I visited Gogabil Lake—popularly known as Goga Jhil—along with my friends, and it turned out to be one of the most peaceful nature trips in Bihar. Located in the Amdabad block of Katihar district, this crescent-shaped oxbow lake sits between the Mahananda, Kankhar, and Ganga rivers, creating a rich wetland ecosystem surrounded by open fields and greenery.
+    What makes Gogabil Lake truly remarkable is its ecological importance. Recognized as Bihar's first Community Reserve and a designated Ramsar wetland site, it serves as a vital sanctuary for biodiversity. Visiting during the pleasant late-autumn weather, we saw flocks of resident and migratory birds—from storks and egrets wading in the shallow marshlands to ducks gliding across the calm, reflective water.
+    Walking along the quiet earthen paths around the lake with friends gave us a much-needed break from our daily college routine. We spent hours watching birds take flight against the morning sky, taking photos, and enjoying the fresh, unpolluted breeze that makes Goga Jhil feel worlds away from city noise.
+    Seeing how local villagers and nature coexist to protect this wetland left a lasting impression on me. Gogabil Lake is truly a hidden gem of Katihar and an unforgettable destination for anyone who loves wildlife, birdwatching, and serene landscapes.`
+  },
+  {
+    title: "Bihar, Katihar – Manihari Ghat",
+    author: "Sachin",
+    date: "Nov 24, 2026",
+    image: "photos/maniharime.jpg",
+    description: `I recently took a trip with my friends to Manihari Ghat, located on the northern bank of the holy River Ganga in the Katihar district of Bihar. Known as one of the most culturally and spiritually significant riverfronts in the Seemanchal region, Manihari Ghat welcomes countless devotees and travelers throughout the year, especially during sacred occasions like Kartik Purnima and Maghi Purnima.
+    As we walked along the ghat and stood by the railing overlooking the wide expanse of the Ganga, the view was breathtaking. Traditional wooden boats and ferries were anchored near the sandy banks while others glided slowly across the water. We spent time sitting on the concrete steps right beside the gentle waves, feeling the cool river breeze and talking with friends.
+    The highlight of our visit was watching the evening sun dip toward the horizon. The golden sunlight shimmered across the rippling river as a crowded boat passed through the glow—creating a timeless scene that captured the soul of Manihari Ghat.
+    Between the lively local stalls, the peaceful sound of flowing water, and the spiritual warmth of the place, this outing with friends gave me wonderful memories and a deeper appreciation for the natural and cultural heritage of Katihar.`
+  },
+  {
     title: "Jharkhand, Hatia",
     author: "Sachin",
     date: "Jun 9, 2026",

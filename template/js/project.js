@@ -1,4 +1,14 @@
 window.projects = [
+   {
+    id: 14,
+    title: "Yt Downloader",
+    description: "Code with vibes.",
+    image:
+      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&h=200&fit=crop&auto=format",
+    demoLink: "https://software.mocosn.in/app.html?id=-Oy_3NFsOCWeIgF9v6qg",
+    codeLink: "/error_pages/error.html",
+    techStack: ["Java","FIREBASE"],
+  },
   {
     id: 1,
     title: "Vibe's music",
