@@ -80,7 +80,7 @@ const images = [
   { src: "./photos/maniharighatme2.jpeg", alt: "Manihari Ghat" },
   { src: "./photos/gogabil_lake2.jpeg", alt: "Gogabil Lake (Goga Jhil)" },
   { src: "./photos/lake.jpeg", alt: "Gogabil Lake (Goga Jhil)" }
-
+  { src: "./photos/ashish.jpeg", alt: "Gogabil Lake (Goga Jhil)" }
 
 ];
 
